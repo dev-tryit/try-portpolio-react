@@ -8,10 +8,13 @@ import { Row } from "widget/Row";
 import { Column } from "widget/Column";
 import logoSource from "assets/logo-dark.png";
 import styled from "styled-components";
+import { Space } from "widget/Space";
 
 const LogoImage = styled.img.attrs(({}) => ({
   src: logoSource,
-}))``;
+}))`
+    height:30px;
+`;
 
 function App() {
   // const [user, setUser] = useState<Nullable<User>>(null);
@@ -35,6 +38,7 @@ function App() {
   return (
     <Column useRandomBackgroundColor={true} fullWidth={true}>
       <Row useRandomBackgroundColor={true} fullWidth={true}>
+        <Space width={'60px'}/>
         <LogoImage />
       </Row>
       <Row useRandomBackgroundColor={true} fullWidth={true}>
