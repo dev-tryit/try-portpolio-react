@@ -6,6 +6,8 @@
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": "src", //절대 경로 설정
+    "typeRoots": ["src/types"], //타입스크립트의 타입을 찾기 위한 폴더
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

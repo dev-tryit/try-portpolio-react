@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { supabase } from "./lib/api";
-import Auth from "./components/Auth";
-import Home from "./components/Home";
-import { Nullable } from "./type/Nullable";
+import { supabase } from "lib/api";
+import { Nullable } from "types/Nullable";
 import { User } from "@supabase/gotrue-js";
-import Row from "./widget/Row";
-import Column from "./widget/Column";
+import Auth from "components/Auth";
+import Home from "components/Home";
+import { Row } from "widget/Row";
+import { Column } from "widget/Column";
+import myImage from 'assets/logo-dark.png';  
 
 function App() {
     // const [user, setUser] = useState<Nullable<User>>(null);
@@ -27,11 +28,13 @@ function App() {
     // }, [user]);
 
     return (
-        <Column useRandomBackgroundColor={true}>
-            <Row useRandomBackgroundColor={true}>
-                test
+        <Column useRandomBackgroundColor={true} fullWidth={true}>
+            <Row useRandomBackgroundColor={true} fullWidth={true}>
+                https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩
             </Row>
-            https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩
+            <Row useRandomBackgroundColor={true} fullWidth={true}>
+                https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩
+            </Row>
         </Column>
     );
 }

@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { supabase } from "../lib/api";
-import { Nullable } from "../type/Nullable";
+import { Nullable } from "../types/Nullable";
 
 type HeplerTextType = { error: Nullable<boolean>, text: Nullable<string> };
 const Auth = () => {

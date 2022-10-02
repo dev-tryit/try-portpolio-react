@@ -1,5 +1,5 @@
 
-import DateOrString from '../type/DateOrString';
+import DateOrString from '../types/DateOrString';
 import log from './log';
 
 class DateUtil {
