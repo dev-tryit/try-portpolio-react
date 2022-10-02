@@ -6,28 +6,28 @@ import { Nullable } from "./type/Nullable";
 import { User } from "@supabase/gotrue-js";
 
 function App() {
-    const [user, setUser] = useState<Nullable<User>>(null);
+    // const [user, setUser] = useState<Nullable<User>>(null);
 
-    useEffect(() => {
-        const session = supabase.auth.session();
-        setUser(session?.user ?? null);
+    // useEffect(() => {
+    //     const session = supabase.auth.session();
+    //     setUser(session?.user ?? null);
 
-        const { data: authListener } = supabase.auth.onAuthStateChange(
-            async (event, session) => {
-                const currentUser = session?.user;
-                setUser(currentUser ?? null);
-            }
-        );
+    //     const { data: authListener } = supabase.auth.onAuthStateChange(
+    //         async (event, session) => {
+    //             const currentUser = session?.user;
+    //             setUser(currentUser ?? null);
+    //         }
+    //     );
 
-        return () => {
-            authListener?.unsubscribe();
-        };
-    }, [user]);
+    //     return () => {
+    //         authListener?.unsubscribe();
+    //     };
+    // }, [user]);
 
     return (
-        <div className="min-w-full min-h-screen flex items-center justify-center bg-gray-200">
-            {!user ? <Auth /> : <Home user={user} />}
-        </div>
+        <>
+        https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩
+        </>
     );
 }
 
