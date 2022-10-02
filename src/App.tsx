@@ -9,11 +9,13 @@ import { Column } from "widget/Column";
 import logoSource from "assets/logo-dark.png";
 import styled from "styled-components";
 import { Space } from "widget/Space";
+import { Padding } from "widget/Padding";
+import { Spacer } from "widget/Spacer";
 
-const LogoImage = styled.img.attrs(({}) => ({
+const LogoImage = styled.img.attrs<{height?:string}>(({}) => ({
   src: logoSource,
 }))`
-    height:30px;
+  height:${({height}) => height?`${height}`:'0'};
 `;
 
 function App() {
@@ -37,9 +39,9 @@ function App() {
 
   return (
     <Column useRandomBackgroundColor={true} fullWidth={true}>
-      <Row useRandomBackgroundColor={true} fullWidth={true}>
-        <Space width={'60px'}/>
-        <LogoImage />
+      <Row useRandomBackgroundColor={true} fullWidth={true} justifyContent="space-between" padding="40px 65px">
+        <LogoImage height={'30px'} />
+        <LogoImage height={'30px'} />
       </Row>
       <Row useRandomBackgroundColor={true} fullWidth={true}>
         https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩
