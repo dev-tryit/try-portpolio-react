@@ -11,6 +11,8 @@ import styled from "styled-components";
 import { Space } from "widget/Space";
 import { Padding } from "widget/Padding";
 import { Spacer } from "widget/Spacer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const LogoImage = styled.img.attrs<{height?:string}>(({}) => ({
   src: logoSource,
@@ -41,7 +43,7 @@ function App() {
     <Column useRandomBackgroundColor={true} fullWidth={true}>
       <Row useRandomBackgroundColor={true} fullWidth={true} justifyContent="space-between" padding="40px 65px">
         <LogoImage height={'30px'} />
-        <LogoImage height={'30px'} />
+        <FontAwesomeIcon icon={faHeart} />
       </Row>
       <Row useRandomBackgroundColor={true} fullWidth={true}>
         https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩
