@@ -12,7 +12,8 @@ import { Space } from "widget/Space";
 import { Padding } from "widget/Padding";
 import { Spacer } from "widget/Spacer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { Divider } from "widget/Divider";
 
 const LogoImage = styled.img.attrs<{height?:string}>(({}) => ({
   src: logoSource,
@@ -40,14 +41,15 @@ function App() {
   // }, [user]);
 
   return (
-    <Column useRandomBackgroundColor={true} fullWidth={true}>
-      <Row useRandomBackgroundColor={true} fullWidth={true} justifyContent="space-between" padding="40px 65px">
+    <Column fullWidth={true}>
+      <Row fullWidth={true} justifyContent="space-between" padding="45px 65px">
         <LogoImage height={'30px'} />
-        <FontAwesomeIcon icon={faHeart} />
+        <FontAwesomeIcon icon={faBars} size={'lg'} />
       </Row>
-      <Row useRandomBackgroundColor={true} fullWidth={true}>
+      <Divider indent="5px" endIndent="5px"/>
+      {/* <Row useRandomBackgroundColor={true} fullWidth={true}>
         https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩
-      </Row>
+      </Row> */}
     </Column>
   );
 }
