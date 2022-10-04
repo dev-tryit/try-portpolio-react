@@ -5,12 +5,12 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "widget/Divider";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import log from "utils/log";
 
 function App() {
   const random = ()=>Math.random()*32453425435;
-  const imageList:string[] = [
+  const imageList:string[] = useMemo(()=>[
     `https://picsum.photos/seed/${random()}/382`,
     `https://picsum.photos/seed/${random()}/382`,
 
@@ -30,8 +30,7 @@ function App() {
     
     `https://picsum.photos/seed/${random()}/784/382`,
 
-  ];
-  log.info("imageList",imageList);
+  ],[]);
   // const [user, setUser] = useState<Nullable<User>>(null);
 
   // useEffect(() => {
@@ -66,7 +65,10 @@ function App() {
         {/*https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩*/}
       </BodyText>
       <BodyImageGrid fullWidth={true} padding="84px 65px">
-        {imageList.map((image)=><img src={image}/>)}
+        {imageList.map((image)=>{
+          const isSpan = image.endsWith("/784/382");
+          return <img src={image} style={{gridColumnEnd:isSpan?'span 2':undefined}}/>
+        })}
       </BodyImageGrid>
     </>;
   },[]);
