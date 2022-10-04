@@ -7,26 +7,6 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "widget/Divider";
 import { useCallback } from "react";
 
-const LogoImage = styled.img.attrs<{height?:string}>(({}) => ({
-  src: logoSource,
-}))`
-  height:${({height}) => height?`${height}`:'0'};
-`;
-
-const BodyText = styled(Row).attrs<{}>(({}) => ({
-  // src: logoSource,
-}))`
-  font-size: 3em; //1em은 기본 글자크기의 높이, %는 기본 글자크기에서의 크기, 1rem은 html 루트 태그의 글자 크기.
-  font-weight: 700;
-  text-align: center;
-  width: 780px;
-`;
-
-const BodyImageGrid = styled(Row).attrs<{}>(({}) => ({
-  // src: logoSource,
-}))`
-`;
-
 function App() {
   // const [user, setUser] = useState<Nullable<User>>(null);
 
@@ -61,10 +41,9 @@ function App() {
         you can have a beautiful metro portfolio just like me.
         {/*https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩*/}
       </BodyText>
-      <BodyText fullWidth={true} padding="84px 65px">
-        you can have a beautiful metro portfolio just like me.
-        {/*https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩*/}
-      </BodyText>
+      <BodyImageGrid fullWidth={true} padding="84px 65px">
+        Grid
+      </BodyImageGrid>
     </>;
   },[]);
 
@@ -78,3 +57,24 @@ function App() {
 }
 
 export default App;
+
+
+const LogoImage = styled.img.attrs<{height?:string}>(({}) => ({
+  src: logoSource,
+}))`
+  height:${({height}) => height?`${height}`:'0'};
+`;
+
+const BodyText = styled(Row).attrs<{}>(({}) => ({
+  // src: logoSource,
+}))`
+  font-size: 3em; //1em은 기본 글자크기의 높이, %는 기본 글자크기에서의 크기, 1rem은 html 루트 태그의 글자 크기.
+  font-weight: 700;
+  text-align: center;
+  width: 780px;
+`;
+
+const BodyImageGrid = styled(Row).attrs<{}>(({}) => ({
+  // src: logoSource,
+}))`
+`;
