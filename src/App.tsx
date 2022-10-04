@@ -1,24 +1,30 @@
-import { useState, useEffect } from "react";
-import { supabase } from "lib/api";
-import { Nullable } from "types/Nullable";
-import { User } from "@supabase/gotrue-js";
-import Auth from "components/Auth";
-import Home from "components/Home";
 import { Row } from "widget/Row";
 import { Column } from "widget/Column";
 import logoSource from "assets/logo-dark.png";
 import styled from "styled-components";
-import { Space } from "widget/Space";
-import { Padding } from "widget/Padding";
-import { Spacer } from "widget/Spacer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "widget/Divider";
+import { useCallback } from "react";
 
 const LogoImage = styled.img.attrs<{height?:string}>(({}) => ({
   src: logoSource,
 }))`
   height:${({height}) => height?`${height}`:'0'};
+`;
+
+const BodyText = styled(Row).attrs<{}>(({}) => ({
+  // src: logoSource,
+}))`
+  font-size: 3em; //1em은 기본 글자크기의 높이, %는 기본 글자크기에서의 크기, 1rem은 html 루트 태그의 글자 크기.
+  font-weight: 700;
+  text-align: center;
+  width: 780px;
+`;
+
+const BodyImageGrid = styled(Row).attrs<{}>(({}) => ({
+  // src: logoSource,
+}))`
 `;
 
 function App() {
@@ -40,16 +46,33 @@ function App() {
   //     };
   // }, [user]);
 
-  return (
-    <Column fullWidth={true}>
+  const header=useCallback(()=>{
+    return <>
       <Row fullWidth={true} justifyContent="space-between" padding="45px 65px">
         <LogoImage height={'30px'} />
         <FontAwesomeIcon icon={faBars} size={'lg'} />
       </Row>
+    </>;
+  },[]);
+
+  const body=useCallback(()=>{
+    return <>
+      <BodyText fullWidth={true} padding="31px 65px">
+        you can have a beautiful metro portfolio just like me.
+        {/*https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩*/}
+      </BodyText>
+      <BodyText fullWidth={true} padding="84px 65px">
+        you can have a beautiful metro portfolio just like me.
+        {/*https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩*/}
+      </BodyText>
+    </>;
+  },[]);
+
+  return (
+    <Column fullWidth={true}>
+      {header()}
       <Divider indent="5px" endIndent="5px"/>
-      {/* <Row useRandomBackgroundColor={true} fullWidth={true}>
-        https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩
-      </Row> */}
+      {body()}
     </Column>
   );
 }
