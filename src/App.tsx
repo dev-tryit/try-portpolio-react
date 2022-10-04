@@ -7,29 +7,28 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "widget/Divider";
 import { useCallback, useMemo } from "react";
 import log from "utils/log";
+import ImageUtil from "utils/ImageUtil";
 
 function App() {
-  const random = ()=>Math.random()*32453425435;
   const imageList:string[] = useMemo(()=>[
-    `https://picsum.photos/seed/${random()}/382`,
-    `https://picsum.photos/seed/${random()}/382`,
+    ImageUtil.random(382,382),
+    ImageUtil.random(382,382),
 
-    `https://picsum.photos/seed/${random()}/784/382`,
+    ImageUtil.random(784,382),
 
-    `https://picsum.photos/seed/${random()}/784/382`,
+    ImageUtil.random(784,382),
 
-    `https://picsum.photos/seed/${random()}/784/784`,
+    ImageUtil.random(784,784),
 
-    `https://picsum.photos/seed/${random()}/382`,
-    `https://picsum.photos/seed/${random()}/382`,
+    ImageUtil.random(382,382),
+    ImageUtil.random(382,382),
 
-    `https://picsum.photos/seed/${random()}/784/784`,
+    ImageUtil.random(784,784),
 
-    `https://picsum.photos/seed/${random()}/382`,
-    `https://picsum.photos/seed/${random()}/382`,
+    ImageUtil.random(382,382),
+    ImageUtil.random(382,382),
     
-    `https://picsum.photos/seed/${random()}/784/382`,
-
+    ImageUtil.random(784,382),
   ],[]);
   // const [user, setUser] = useState<Nullable<User>>(null);
 
