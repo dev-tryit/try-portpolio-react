@@ -42,7 +42,13 @@ function App() {
         {/*https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩*/}
       </BodyText>
       <BodyImageGrid fullWidth={true} padding="84px 65px">
-        Grid
+        <p>a</p>
+        <p>b</p>
+        <p style={{gridColumnEnd:'span 2'}}>c</p>
+        <p>d</p>
+        <p>e</p>
+        <p>f</p>
+        <p>g</p>
       </BodyImageGrid>
     </>;
   },[]);
@@ -65,16 +71,26 @@ const LogoImage = styled.img.attrs<{height?:string}>(({}) => ({
   height:${({height}) => height?`${height}`:'0'};
 `;
 
-const BodyText = styled(Row).attrs<{}>(({}) => ({
+const BodyText = styled(Row).attrs<{height?:string}>(({}) => ({
   // src: logoSource,
 }))`
   font-size: 3em; //1em은 기본 글자크기의 높이, %는 기본 글자크기에서의 크기, 1rem은 html 루트 태그의 글자 크기.
   font-weight: 700;
+  line-height: 1.7em;
   text-align: center;
   width: 780px;
 `;
 
-const BodyImageGrid = styled(Row).attrs<{}>(({}) => ({
+const BodyImageGrid = styled<any>(Row).attrs(({}) => ({
   // src: logoSource,
 }))`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(382px,auto);
+  grid-gap: 20px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
