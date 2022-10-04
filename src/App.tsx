@@ -6,8 +6,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "widget/Divider";
 import { useCallback } from "react";
+import log from "utils/log";
 
 function App() {
+  const random = ()=>Math.random()*32453425435;
+  const imageList:string[] = [
+    `https://picsum.photos/seed/${random()}/382`,
+    `https://picsum.photos/seed/${random()}/382`,
+
+    `https://picsum.photos/seed/${random()}/784/382`,
+
+    `https://picsum.photos/seed/${random()}/784/382`,
+
+    `https://picsum.photos/seed/${random()}/784/784`,
+
+    `https://picsum.photos/seed/${random()}/382`,
+    `https://picsum.photos/seed/${random()}/382`,
+
+    `https://picsum.photos/seed/${random()}/784/784`,
+
+    `https://picsum.photos/seed/${random()}/382`,
+    `https://picsum.photos/seed/${random()}/382`,
+    
+    `https://picsum.photos/seed/${random()}/784/382`,
+
+  ];
+  log.info("imageList",imageList);
   // const [user, setUser] = useState<Nullable<User>>(null);
 
   // useEffect(() => {
@@ -42,13 +66,7 @@ function App() {
         {/*https://ukiyo.qodeinteractive.com/metro-portfolio/ 클론코딩*/}
       </BodyText>
       <BodyImageGrid fullWidth={true} padding="84px 65px">
-        <p>a</p>
-        <p>b</p>
-        <p style={{gridColumnEnd:'span 2'}}>c</p>
-        <p>d</p>
-        <p>e</p>
-        <p>f</p>
-        <p>g</p>
+        {imageList.map((image)=><img src={image}/>)}
       </BodyImageGrid>
     </>;
   },[]);
