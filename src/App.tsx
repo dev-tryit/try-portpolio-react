@@ -65,7 +65,7 @@ function App() {
       </BodyText>
       <BodyImageGrid fullWidth={true} padding="84px 65px">
         {imageList.map((image)=>{
-          const isSpan = image.endsWith("/784/382");
+          const isSpan = image.endsWith("/784/382") || image.endsWith("/784/784");
           return <img src={image} style={{gridColumnEnd:isSpan?'span 2':undefined}}/>
         })}
       </BodyImageGrid>
@@ -105,7 +105,7 @@ const BodyImageGrid = styled<any>(Row).attrs(({}) => ({
 }))`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: minmax(382px,auto);
+  grid-auto-rows: 384px;
   grid-gap: 20px;
   img {
     width: 100%;
