@@ -104,11 +104,8 @@ const imageGlitter = keyframes`
   0% {
     opacity: 1;
   }
-  50% {
+  1% {
     opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 `
 const BodyImageGrid = styled<any>(Row).attrs(({}) => ({
@@ -124,7 +121,13 @@ const BodyImageGrid = styled<any>(Row).attrs(({}) => ({
     height: 100%;
     object-fit: cover;
     &:hover{
-      animation: ${imageGlitter} 2s linear 0s infinite alternate; //name, duration, delay, iteration-count, time-function, direction
+      animation: ${imageGlitter} 100s linear 0s 1 normal; //name, duration, delay, iteration-count, time-function, direction
     }
   }
 `;
+/**animation-direction
+ * normal
+ * reverse
+ * alternate
+ * alternate-reverse
+*/
