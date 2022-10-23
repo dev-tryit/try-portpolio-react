@@ -1,7 +1,7 @@
 import { Row } from "widget/Row";
 import { Column } from "widget/Column";
 import logoSource from "assets/logo-dark.png";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Divider } from "widget/Divider";
@@ -100,6 +100,17 @@ const BodyText = styled(Row).attrs<{height?:string}>(({}) => ({
   width: 780px;
 `;
 
+const imageGlitter = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 const BodyImageGrid = styled<any>(Row).attrs(({}) => ({
   // src: logoSource,
 }))`
@@ -108,8 +119,12 @@ const BodyImageGrid = styled<any>(Row).attrs(({}) => ({
   grid-auto-rows: 384px;
   grid-gap: 20px;
   img {
+    cursor: pointer;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    &:hover{
+      animation: ${imageGlitter} 2s linear 0s infinite alternate; //name, duration, delay, iteration-count, time-function, direction
+    }
   }
 `;
