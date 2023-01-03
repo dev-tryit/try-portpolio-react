@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { supabase } from "../lib/api";
-import log from "../utils/log";
+import { supabase } from "../../lib/api";
+import log from "../../utils/log";
 
 type UpdatableTextProp = {
     className?: any;
@@ -103,7 +103,7 @@ const TodoItem = ({ todo, onDelete, onUpdate }: TodoItemProp) => {
     return (
         <div className={"flex flex-row border p-3"}>
             <input
-                className="flex-none cursor-pointer mr-2"
+                className="flex-none mr-2 cursor-pointer"
                 onChange={toggleCompleted}
                 type="checkbox"
                 checked={isCompleted ? true : false}

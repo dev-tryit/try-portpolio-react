@@ -1,4 +1,4 @@
-import { supabase } from "../lib/api";
+import { supabase } from "../../lib/api";
 import { Dispatch, SetStateAction, useRef } from "react";
 
 type RecoverPasswordProp = { token:string, setRecoveryToken:Dispatch<SetStateAction<any>> };
