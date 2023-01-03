@@ -1,7 +1,7 @@
-import PortpolioPage from "screens/pages/PortpolioPage";
+import Portpolio2Page from "screens/pages/Portpolio2Page";
 
 function App() {
-  return <PortpolioPage/>;
+  return <Portpolio2Page/>;
 }
 
 export default App;
