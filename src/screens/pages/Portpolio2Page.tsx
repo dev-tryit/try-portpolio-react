@@ -1,12 +1,67 @@
-function Portpolio2Page() {
-  return <BackgroundWidget/>;
-}
-  
-export default Portpolio2Page;
+import React from "react";
+import styled from "styled-components";
 
-//100%는 부모 신경써서 최대한, 100wv는 뷰화면 크기에 비례하여 이다.
-const BackgroundWidget = ()=>{
-  return <div style={{width:'100vw',height:'100vh', backgroundColor:"rgb(17,24,39)"}}>
-    <p>test</p>
-  </div>
-}
+const Portpolio2Page = React.memo(styled.div.attrs(()=>({
+  children:<>
+    <Menu />
+    <StackedScreen />
+    <FixedMenu />
+  </>
+}))`
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(17,24,39);
+`);
+
+const Menu = React.memo(styled.div.attrs(()=>({
+  children: 'menu'
+}))`
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  background-color: red;
+`);
+
+const FixedMenu = React.memo(styled.div.attrs(()=>({
+  children: 'fixedMenu'
+}))`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 150px;
+  background-color: purple;
+`);
+
+const StackedScreen = React.memo(styled.div.attrs(()=>({
+  children: <>
+    <Screen>page3</Screen>
+    <Screen>page2</Screen>
+    <Screen open>page1</Screen>
+  </>
+}))``);
+
+type ScreenProps = {
+  open?:boolean
+};
+const Screen = React.memo(styled.div<ScreenProps>`
+  ${({open})=>{
+    if(open) {
+      return `
+          position: relative;
+          width: 100vw;
+          height: 100vh;
+          background-color: blue;
+      `;
+    }
+    else {
+      return `
+          position: absolute;
+          top:0;
+          width: 100vw;
+          background-color: green;
+      `;
+    }
+  }}
+`);
+
+export default Portpolio2Page;
