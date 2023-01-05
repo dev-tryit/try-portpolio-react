@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ApplyStateFunction, ReduxUtil } from "_commons/utils/ReduxUtil";
 
-const _reducerKey = "userReducer";
+const _reducerKey = "screenReducer";
 
 const initialState = {
   version: 3,
@@ -39,7 +39,7 @@ const _slice = createSlice({
   reducers: {},
   extraReducers: ReduxUtil.makeExtraReducers(actions),
 });
-export default class UserReducer {
+export class ScreenReducer {
   static readonly key: string = _reducerKey;
   static readonly reducer = _slice.reducer;
   static readonly actions = actions;
