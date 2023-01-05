@@ -81,8 +81,9 @@ const StackedScreen = React.memo(() => {
           width: ${isCurrentPage?'100%':'0'};
           height: ${isCurrentPage?'100%':'0'};
           overflow: hidden;
-          transform: ${isMenuOn ? "translate3d(0,200px,-10px)" : undefined};
           background-color: pink;
+          transform: ${isMenuOn ? "translate3d(0,200px,-10px)" : undefined};
+          transition: transform 0.45s, opacity 0.45s;
         `}
         onClick={()=>{
           alert(`페이지 ${i}가 클릭되었습니다.`);
