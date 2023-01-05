@@ -8,6 +8,12 @@ const initialState = {
 };
 
 const actions = {
+  /**
+   * 사용예시
+   * dispatch(UserReducer.actions.login(params));
+   * 작업이 끝나면, useAppSelector에 의해 
+   */
+
   login: createAsyncThunk(
     `${_reducerKey}/login`,
     async (params) => {

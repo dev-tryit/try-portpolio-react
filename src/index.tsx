@@ -4,11 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {Provider} from 'react-redux';
-import {reduxStore} from '_commons/ReduxStore';
+import { ReduxUtil } from "_commons/utils/ReduxUtil";
 
 const ProviderApp = () => {
     return (
-        <Provider store={reduxStore}>
+        <Provider store={ReduxUtil.reduxStore}>
         <App />
         </Provider>
     );
