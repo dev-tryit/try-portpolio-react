@@ -39,11 +39,15 @@ export class ReduxUtil {
       }
     };
   }
-  static applyState<STATE>(apply:(state:STATE)=>void){
+  static applyState<STATE>(apply:(state:STATE)=>void):ApplyStateFunction<STATE> {
     return {
       apply
     };
   }
+}
+
+export type ApplyStateFunction<STATE> = {
+  apply: (state:STATE)=>void;
 }
 
 export type RootState = ReturnType<typeof ReduxUtil.reduxStore.getState>
