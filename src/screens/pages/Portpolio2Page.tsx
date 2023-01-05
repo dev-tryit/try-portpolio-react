@@ -11,6 +11,7 @@ const Portpolio2Page = React.memo(() => {
         width: 100vw;
         height: 100vh;
         background-color: rgb(17, 24, 39);
+        overflow: hidden;
       `}
     >
       <Menu />
@@ -60,17 +61,31 @@ const FixedMenu = React.memo(() => {
 
 const StackedScreen = React.memo(() => {
   const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
+  const screenList:string[] = ["page1","page2","page3"];
+  const selectedScreenIndex:number = 0;
 
   return (
-    <div
-      className={css`
-        width: 100vw;
-        height: 100vh;
-      `}
-    >
-      <Screen>page3</Screen>
-      <Screen>page2</Screen>
-      <Screen open>page1</Screen>
+    <div className={css`
+      width: 100vw;
+      height: 100vh;
+      perspective: 100px; //하위 태그에 translate3d가 작동하기 위해서 필요함.
+    `}>
+      {screenList.map((screen,i)=>{
+        const isCurrentPage = i === selectedScreenIndex;
+
+        return <div
+        className={css`
+          position: absolute;
+          width: ${isCurrentPage?'100%':'0'};
+          height: ${isCurrentPage?'100%':'0'};
+          overflow: hidden;
+          transform: ${isMenuOn ? "translate3d(0,200px,-10px)" : undefined};
+          background-color: pink;
+        `}
+      >
+        {screen}
+      </div>;
+      })}
     </div>
   );
 });
@@ -85,7 +100,7 @@ const Screen = styled.div<ScreenProps>`
     width: 100%;
     height: 100%;
     background-color: ${open ? "blue" : "green"};
-    opacity: ${open ? 1: 0};
+    opacity: ${open ? 1 : 0};
   `}
 `;
 
