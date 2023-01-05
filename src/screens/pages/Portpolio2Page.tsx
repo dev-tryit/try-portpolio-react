@@ -75,6 +75,8 @@ const StackedScreen = React.memo(() => {
 
         return <div
         className={css`
+          cursor: pointer;
+          z-index: ${isCurrentPage?`${screenList.length}`:`${i}`};
           position: absolute;
           width: ${isCurrentPage?'100%':'0'};
           height: ${isCurrentPage?'100%':'0'};
@@ -82,6 +84,9 @@ const StackedScreen = React.memo(() => {
           transform: ${isMenuOn ? "translate3d(0,200px,-10px)" : undefined};
           background-color: pink;
         `}
+        onClick={()=>{
+          alert(`페이지 ${i}가 클릭되었습니다.`);
+        }}
       >
         {screen}
       </div>;
