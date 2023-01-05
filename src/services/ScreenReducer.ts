@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ApplyStateFunction, ReduxUtil } from "_commons/utils/ReduxUtil";
+import {  applyState, ApplyStateFunction, makeExtraReducers } from "_commons/utils/ReduxUtil";
 
 const _reducerKey = "screenReducer";
 
@@ -19,7 +19,7 @@ const actions = {
     async (params) => {
       //TODO: params를 통해 API 작업 구현
 
-      return ReduxUtil.applyState<STATE>((state) => { 
+      return applyState<STATE>((state) => { 
         //TODO: params를 통해 state 적용
       });
     }
@@ -37,7 +37,7 @@ const _slice = createSlice({
   name: _reducerKey,
   initialState: initialState,
   reducers: {},
-  extraReducers: ReduxUtil.makeExtraReducers(actions),
+  extraReducers: makeExtraReducers(actions),
 });
 export class ScreenReducer {
   static readonly key: string = _reducerKey;
