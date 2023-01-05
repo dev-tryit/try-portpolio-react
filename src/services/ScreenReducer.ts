@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {  applyState, ApplyStateFunction, makeExtraReducers } from "_commons/utils/ReduxUtil";
 
-const _reducerKey = "screenReducer";
-
+const _key = "screen";
 const initialState = {
-  version: 3,
+  isMenuOn: false,
 };
 
 const actions = {
@@ -14,33 +13,26 @@ const actions = {
    * 작업이 끝나면, useAppSelector에 의해 
    */
 
-  login: createAsyncThunk<ApplyStateFunction<STATE>,LoginUIParams>(
-    `${_reducerKey}/login`,
+  toggleMenu: createAsyncThunk<ApplyStateFunction<STATE>,void>(
+    `${_key}/toggleMenu`,
     async (params) => {
-      //TODO: params를 통해 API 작업 구현
-
-      return applyState<STATE>((state) => { 
-        //TODO: params를 통해 state 적용
+      return applyState<STATE>((state) => {
+        state.isMenuOn = !state.isMenuOn;
       });
     }
   ),
 };
 
-//FunctionParams
-type LoginUIParams = {
-
-}
-
 //------------------------------ 위에는 수정 O, 아래는 수정 X
 type STATE = typeof initialState;
 const _slice = createSlice({
-  name: _reducerKey,
+  name: _key,
   initialState: initialState,
   reducers: {},
   extraReducers: makeExtraReducers(actions),
 });
 export class ScreenReducer {
-  static readonly key: string = _reducerKey;
-  static readonly reducer = _slice.reducer;
+  static readonly key: string = _key;
+  static readonly reducer = {[_key]: _slice.reducer};
   static readonly actions = actions;
 }

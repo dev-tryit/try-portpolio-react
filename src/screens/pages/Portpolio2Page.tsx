@@ -1,6 +1,8 @@
+import React from "react";
 import { css } from "@emotion/css";
 import styled from "@emotion/styled";
-import React from "react";
+import { useTypedDispatch, useTypedSelector } from "_commons/utils/ReduxUtil";
+import { ScreenReducer } from "services/ScreenReducer"; //이게 맨아래있지 않으면 에러남..
 
 const Portpolio2Page = React.memo(() => {
   return (
@@ -12,13 +14,16 @@ const Portpolio2Page = React.memo(() => {
       `}
     >
       <Menu />
-      <FixedMenu />
       <StackedScreen />
+      <FixedMenu />
     </div>
   );
 });
 
 const Menu = React.memo(() => {
+  const dispatch = useTypedDispatch();
+  const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
+
   return (
     <div
       className={css`
@@ -27,6 +32,9 @@ const Menu = React.memo(() => {
         width: 100vw;
         background-color: red;
       `}
+      onClick={() => {
+        dispatch(ScreenReducer.actions.toggleMenu());
+      }}
     >
       menu
     </div>
@@ -53,6 +61,8 @@ const FixedMenu = React.memo(() => {
 });
 
 const StackedScreen = React.memo(() => {
+  const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
+
   return (
     <div>
       <Screen>page3</Screen>
