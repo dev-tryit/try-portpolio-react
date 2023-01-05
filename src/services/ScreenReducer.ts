@@ -3,7 +3,7 @@ import {  applyState, ApplyStateFunction, makeExtraReducers } from "_commons/uti
 
 const _key = "screen";
 const initialState = {
-  isMenuOn: true,
+  isMenuOn: false,
 };
 
 const actions = {

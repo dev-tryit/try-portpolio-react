@@ -23,19 +23,49 @@ const Portpolio2Page = React.memo(() => {
 
 const Menu = React.memo(() => {
   const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
+  const menuList: string[] = ["HOME", "ABOUT US", "RESUME"];
 
   return (
-    <div
+    <nav
       className={css`
         position: absolute;
         top: 0;
         width: 100vw;
-        background-color: red;
+        height: 50vh;
+        padding: 30px;
+
+        transition: transform 1.2s, opacity 1.2s;
+        opacity: ${isMenuOn ? 1 : 0};
+        transform: ${isMenuOn
+          ? `translate3d(0,0,0)`
+          : `translate3d(0,150px,0)`};
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
       `}
       onClick={() => {}}
     >
-      menu
-    </div>
+      {menuList.map((menu) => (
+        <div
+          className={css`
+            cursor: pointer; //TODO: 해당 커서가 활성화가 안됨...
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+
+            margin-left: 14px;
+            margin-right: 14px;
+          `}
+          onClick={() => {}}
+        >
+          {menu}
+        </div>
+      ))}
+    </nav>
   );
 });
 
@@ -44,6 +74,8 @@ const FixedMenu = React.memo(() => {
   return (
     <div
       className={css`
+        cursor: pointer;
+
         position: fixed;
         top: 0;
         right: 0;
@@ -61,53 +93,50 @@ const FixedMenu = React.memo(() => {
 
 const StackedScreen = React.memo(() => {
   const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
-  const screenList:string[] = ["page1","page2","page3"];
-  const selectedScreenIndex:number = 0;
+  const screenList: string[] = ["page", "page", "page"];
+  const selectedScreenIndex: number = 0;
 
   return (
-    <div className={css`
-      width: 100vw;
-      height: 100vh;
-      perspective: 100px; //하위 태그에 translate3d가 작동하기 위해서 필요함.
-    `}>
-      {screenList.map((screen,i)=>{
+    <div
+      className={css`
+        width: 100vw;
+        height: 100vh;
+        perspective: 1000px; //소실점에 위치 지정
+        perspective-origin: 50% -50%; //보고 있는 눈에 위치를 변경.
+      `}
+    >
+      {screenList.map((screen, i) => {
         const isCurrentPage = i === selectedScreenIndex;
 
-        return <div
-        className={css`
-          cursor: pointer;
-          z-index: ${isCurrentPage?`${screenList.length}`:`${i}`};
-          position: absolute;
-          width: ${isCurrentPage?'100%':'0'};
-          height: ${isCurrentPage?'100%':'0'};
-          overflow: hidden;
-          background-color: pink;
-          transform: ${isMenuOn ? "translate3d(0,200px,-10px)" : undefined};
-          transition: transform 0.45s, opacity 0.45s;
-        `}
-        onClick={()=>{
-          alert(`페이지 ${i}가 클릭되었습니다.`);
-        }}
-      >
-        {screen}
-      </div>;
+        return (
+          <div
+            className={css`
+              cursor: pointer;
+              z-index: ${isCurrentPage
+                ? `${screenList.length}`
+                : `${screenList.length - 1 - i}`};
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+              background-color: pink;
+
+              transition: transform 0.45s, opacity 0.45s;
+              opacity: ${1 - 0.1 * i};
+              transform: ${isMenuOn
+                ? `translate3d(0,75%,${-200 - i * 50}px)`
+                : undefined};
+            `}
+            onClick={() => {
+              alert(`페이지 ${i}가 클릭되었습니다.`);
+            }}
+          >
+            {screen}
+            {i}
+          </div>
+        );
       })}
     </div>
   );
 });
-
-type ScreenProps = {
-  open?: boolean;
-};
-const Screen = styled.div<ScreenProps>`
-  ${({ open }) => `
-    position: ${open ? "relative" : "absolute"};
-    top:${open ? undefined : 0};
-    width: 100%;
-    height: 100%;
-    background-color: ${open ? "blue" : "green"};
-    opacity: ${open ? 1 : 0};
-  `}
-`;
-
 export default Portpolio2Page;
