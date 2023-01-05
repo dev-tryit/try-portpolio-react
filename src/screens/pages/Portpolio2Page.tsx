@@ -22,9 +22,14 @@ const Menu = React.memo(styled.div.attrs(()=>({
   background-color: red;
 `);
 
-const FixedMenu = React.memo(styled.div.attrs(()=>({
-  children: 'fixedMenu'
-}))`
+const FixedMenu = React.memo(styled.div.attrs(()=>{
+  return {
+    children: 'fixedMenu',
+    onClick:()=>{
+      console.log("FixedMenu click");
+    },
+  };
+})`
   position: fixed;
   top: 0;
   right: 0;

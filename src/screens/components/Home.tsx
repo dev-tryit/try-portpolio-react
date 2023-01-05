@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { supabase } from "../../lib/api";
-import { Nullable } from "../../types/Nullable";
+import { Nullable } from "../../_commons/types/Nullable";
 import RecoverPassword from "./RecoverPassword";
 import TodoItem from "./TodoItem";
 
