@@ -14,7 +14,7 @@ const actions = {
    * 작업이 끝나면, useAppSelector에 의해 
    */
 
-  login: createAsyncThunk(
+  login: createAsyncThunk<any,any>(
     `${_reducerKey}/login`,
     async (params) => {
       //TODO: params를 통해 API 작업 구현
