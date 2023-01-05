@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
+
 
 export const Spacer = styled.div<{flex?:number}>`
     flex-grow:${({flex}) => flex?`${flex}`:'1'};

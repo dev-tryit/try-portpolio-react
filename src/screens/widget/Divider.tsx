@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const Divider = styled.div<{height?:string,color?:string,indent?:string,endIndent?:string}>`
     width:${({indent,endIndent}) => `calc(100% - ${indent?`${indent}`:'0'} - ${endIndent?`${endIndent}`:'0'})`};

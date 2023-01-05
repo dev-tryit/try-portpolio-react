@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const Row = styled.div<{useRandomBackgroundColor?:boolean, fullWidth?:boolean, fullHeight?:boolean, justifyContent?:string, alignItems?:string, padding?:string}>`
     display:flex;
