@@ -1,20 +1,22 @@
+import { css } from "@emotion/css";
 import React from "react";
 import styled from "styled-components";
 
-const Portpolio2Page = React.memo(styled.div.attrs(()=>({
-  children:<>
-    <Menu />
-    <StackedScreen />
-    <FixedMenu />
-  </>
-}))`
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(17,24,39);
-`);
+const Portpolio2Page = React.memo(function () {
+  return (
+    <div
+      className={css`
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(17, 24, 39);
+      `}
+    >
+    </div>
+  );
+});
 
-const Menu = React.memo(styled.div.attrs(()=>({
-  children: 'menu'
+const Menu = React.memo(styled.div.attrs(() => ({
+  children: "menu",
 }))`
   position: absolute;
   top: 0;
@@ -22,10 +24,10 @@ const Menu = React.memo(styled.div.attrs(()=>({
   background-color: red;
 `);
 
-const FixedMenu = React.memo(styled.div.attrs(()=>{
+const FixedMenu = React.memo(styled.div.attrs(() => {
   return {
-    children: 'fixedMenu',
-    onClick:()=>{
+    children: "fixedMenu",
+    onClick: () => {
       console.log("FixedMenu click");
     },
   };
@@ -37,28 +39,31 @@ const FixedMenu = React.memo(styled.div.attrs(()=>{
   background-color: purple;
 `);
 
-const StackedScreen = React.memo(styled.div.attrs(()=>({
-  children: <>
-    <Screen>page3</Screen>
-    <Screen>page2</Screen>
-    <Screen open>page1</Screen>
-  </>
-}))``);
+const StackedScreen = React.memo(
+  styled.div.attrs(() => ({
+    children: (
+      <>
+        <Screen>page3</Screen>
+        <Screen>page2</Screen>
+        <Screen open>page1</Screen>
+      </>
+    ),
+  }))``
+);
 
 type ScreenProps = {
-  open?:boolean
+  open?: boolean;
 };
 const Screen = React.memo(styled.div<ScreenProps>`
-  ${({open})=>{
-    if(open) {
+  ${({ open }) => {
+    if (open) {
       return `
           position: relative;
           width: 100vw;
           height: 100vh;
           background-color: blue;
       `;
-    }
-    else {
+    } else {
       return `
           position: absolute;
           top:0;

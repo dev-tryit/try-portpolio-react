@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../../lib/api";
-import log from "../../utils/log";
+import log from "../../_commons/utils/log";
 
 type UpdatableTextProp = {
     className?: any;
