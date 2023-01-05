@@ -1,11 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ReduxUtil } from "_commons/utils/ReduxUtil";
-import { UserState } from "./UserState";
 
 const _uniqueKey = "userReducer";
-const state: UserState = {};
+
+const initialState = {
+  version: 3,
+};
+
 const actions = {
-  init(state: UserState, params: any) {
+  init(state: STATE, params: any) {
     //TODO: params를 통해 state 적용
   },
 };
@@ -15,16 +18,18 @@ const asyncActions = {
     async (params) => {
       //TODO: params를 통해 API 작업 구현
 
-      return ReduxUtil.applyState<UserState>((state) => {
+      return ReduxUtil.applyState<STATE>((state) => {
         //TODO: params를 통해 state 적용
       });
     }
   ),
 };
 
+//------------------------------ 위에는 수정 O, 아래는 수정 X
+type STATE = typeof initialState;
 const _slice = createSlice({
   name: _uniqueKey,
-  initialState: state,
+  initialState: initialState,
   reducers: actions,
   extraReducers: ReduxUtil.makeExtraReducers(asyncActions),
 });
