@@ -21,7 +21,6 @@ const Portpolio2Page = React.memo(() => {
 });
 
 const Menu = React.memo(() => {
-  const dispatch = useTypedDispatch();
   const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
 
   return (
@@ -32,9 +31,7 @@ const Menu = React.memo(() => {
         width: 100vw;
         background-color: red;
       `}
-      onClick={() => {
-        dispatch(ScreenReducer.actions.toggleMenu());
-      }}
+      onClick={() => {}}
     >
       menu
     </div>
@@ -42,6 +39,7 @@ const Menu = React.memo(() => {
 });
 
 const FixedMenu = React.memo(() => {
+  const dispatch = useTypedDispatch();
   return (
     <div
       className={css`
@@ -52,7 +50,7 @@ const FixedMenu = React.memo(() => {
         background-color: purple;
       `}
       onClick={() => {
-        console.log("FixedMenu click");
+        dispatch(ScreenReducer.actions.toggleMenu());
       }}
     >
       fixedMenu
@@ -64,7 +62,12 @@ const StackedScreen = React.memo(() => {
   const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
 
   return (
-    <div>
+    <div
+      className={css`
+        width: 100vw;
+        height: 100vh;
+      `}
+    >
       <Screen>page3</Screen>
       <Screen>page2</Screen>
       <Screen open>page1</Screen>
@@ -75,24 +78,15 @@ const StackedScreen = React.memo(() => {
 type ScreenProps = {
   open?: boolean;
 };
-const Screen = React.memo(styled.div<ScreenProps>`
-  ${({ open }) => {
-    if (open) {
-      return `
-          position: relative;
-          width: 100vw;
-          height: 100vh;
-          background-color: blue;
-      `;
-    } else {
-      return `
-          position: absolute;
-          top:0;
-          width: 100vw;
-          background-color: green;
-      `;
-    }
-  }}
-`);
+const Screen = styled.div<ScreenProps>`
+  ${({ open }) => `
+    position: ${open ? "relative" : "absolute"};
+    top:${open ? undefined : 0};
+    width: 100%;
+    height: 100%;
+    background-color: ${open ? "blue" : "green"};
+    opacity: ${open ? 1: 0};
+  `}
+`;
 
 export default Portpolio2Page;
