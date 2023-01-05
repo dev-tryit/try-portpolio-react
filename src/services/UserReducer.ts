@@ -8,17 +8,12 @@ const initialState = {
 };
 
 const actions = {
-  init(state: STATE, params: any) {
-    //TODO: params를 통해 state 적용
-  },
-};
-const asyncActions = {
   login: createAsyncThunk(
     `${_uniqueKey}/login`,
     async (params) => {
       //TODO: params를 통해 API 작업 구현
 
-      return ReduxUtil.applyState<STATE>((state) => {
+      return ReduxUtil.applyState<STATE>((state) => { 
         //TODO: params를 통해 state 적용
       });
     }
@@ -30,14 +25,11 @@ type STATE = typeof initialState;
 const _slice = createSlice({
   name: _uniqueKey,
   initialState: initialState,
-  reducers: actions,
-  extraReducers: ReduxUtil.makeExtraReducers(asyncActions),
+  reducers: {},
+  extraReducers: ReduxUtil.makeExtraReducers(actions),
 });
 export default class UserReducer {
   static readonly key: string = _uniqueKey;
   static readonly reducer = _slice.reducer;
-  static readonly actions = {
-    ..._slice.actions,
-    ...asyncActions,
-  };
+  static readonly actions = actions;
 }

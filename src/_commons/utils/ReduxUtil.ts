@@ -16,7 +16,7 @@ export class ReduxUtil {
         builder.addCase(
           //@ts-ignore
           asyncAction.fulfilled,
-          (state: any, { payload }: { payload: any }) => payload.apply(state)
+          (state: any, { payload }: { payload: any }) => payload?.apply?.(state)
         );
       }
     };
