@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ReduxUtil as ReduxUtil } from "_commons/utils/ReduxUtil";
+import { ReduxUtil } from "_commons/utils/ReduxUtil";
 import { UserState } from "./UserState";
 
 const _uniqueKey = "userReducer";
