@@ -8,4 +8,6 @@ export default class MyColors {
   static readonly disableButtonBackgroundColor = '#E4E4E4';
   static readonly disableButtonTextColor = '#000000';
   static readonly white = '#ffffff';
+  static readonly black = '#000000';
+  static readonly pink = '#ED9493';
 }

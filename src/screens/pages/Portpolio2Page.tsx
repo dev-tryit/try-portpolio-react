@@ -3,6 +3,8 @@ import { css } from "@emotion/css";
 import styled from "@emotion/styled";
 import { useTypedDispatch, useTypedSelector } from "_commons/utils/ReduxUtil";
 import { ScreenReducer } from "services/ScreenReducer"; //이게 맨아래있지 않으면 에러남..
+import MyColors from "_commons/MyColors";
+import { Space as SizedBox } from "screens/widget/SizedBox";
 
 const Portpolio2Page = React.memo(() => {
   return (
@@ -74,19 +76,52 @@ const FixedMenu = React.memo(() => {
   return (
     <div
       className={css`
-        cursor: pointer;
-
         position: fixed;
         top: 0;
         right: 0;
-        width: 150px;
-        background-color: purple;
+
+        display: flex;
+        width: 300px;
+        height: 60px;
       `}
-      onClick={() => {
-        dispatch(ScreenReducer.actions.toggleMenu());
-      }}
     >
-      fixedMenu
+      <div
+        className={css`
+          flex-grow: 1;
+          height: 100%;
+          background-color: ${MyColors.pink};
+
+          color: ${MyColors.white};
+          font-size: 20px;
+          font-weight: 900;
+
+          display:flex;
+          align-items: center;
+        `}
+      >
+        <SizedBox width="15px"/>
+        TryIt
+      </div>
+      <div
+        className={css`
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: 60px;
+          height: 60px;
+          background-color: ${MyColors.black};
+          color: ${MyColors.white};
+          font-size: 30px;
+          font-weight: 300;
+        `}
+        onClick={() => {
+          dispatch(ScreenReducer.actions.toggleMenu());
+        }}
+      >
+        X
+      </div>
     </div>
   );
 });
