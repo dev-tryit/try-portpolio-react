@@ -10,7 +10,7 @@ const Page1 = React.memo(() => {
         background-color: pink;
       `}
     >
-      Page1
+      AboutPage
     </div>
   );
 });

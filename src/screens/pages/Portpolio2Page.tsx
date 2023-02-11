@@ -5,9 +5,9 @@ import { ScreenReducer } from "services/ScreenReducer"; //이게 맨아래있지
 import MyColors from "_commons/MyColors";
 import { Space as SizedBox } from "_commons/widgets/SizedBox";
 import { RiCloseFill, RiMenu5Fill } from "react-icons/ri";
-import Page1 from "screens/widgets/portpolio2/Page1";
-import Page2 from "screens/widgets/portpolio2/Page2";
-import Page3 from "screens/widgets/portpolio2/Page3";
+import Page1 from "screens/widgets/portpolio2/HomePage";
+import Page2 from "screens/widgets/portpolio2/AboutPage";
+import Page3 from "screens/widgets/portpolio2/ResumePage";
 
 const Portpolio2Page = React.memo(() => {
   return (
