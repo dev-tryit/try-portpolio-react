@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {  applyState, ApplyStateFunction, makeExtraReducers } from "_commons/utils/ReduxUtil";
 
-const _key = "screen";
+const _key = "page";
 const initialState = {
   isMenuOn: false,
+  selectedPageIndex: 0,
 };
 
 const actions = {
@@ -21,6 +22,14 @@ const actions = {
       });
     }
   ),
+  selectPage: createAsyncThunk<ApplyStateFunction<STATE>,void>(
+    `${_key}/toggleMenu`,
+    async (params) => {
+      return applyState<STATE>((state) => {
+        state.isMenuOn = !state.isMenuOn;
+      });
+    }
+  ),
 };
 
 //------------------------------ 위에는 수정 O, 아래는 수정 X
@@ -31,7 +40,7 @@ const _slice = createSlice({
   reducers: {},
   extraReducers: makeExtraReducers(actions),
 });
-export class ScreenReducer {
+export class PageReducer {
   static readonly key: string = _key;
   static readonly reducer = {[_key]: _slice.reducer};
   static readonly actions = actions;

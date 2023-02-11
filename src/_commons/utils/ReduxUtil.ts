@@ -1,5 +1,5 @@
 
-import { ScreenReducer } from "services/ScreenReducer";
+import { PageReducer } from "services/PageReducer";
 import {
   ActionReducerMapBuilder,
   CaseReducers,
@@ -10,7 +10,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 export const reduxStore = configureStore({
   devTools: process.env.NODE_ENV !== "production",
   reducer: {
-    ...ScreenReducer.reducer,
+    ...PageReducer.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

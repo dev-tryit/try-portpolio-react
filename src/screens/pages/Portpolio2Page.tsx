@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "@emotion/css";
 import { useTypedDispatch, useTypedSelector } from "_commons/utils/ReduxUtil";
-import { ScreenReducer } from "services/ScreenReducer"; //이게 맨아래있지 않으면 에러남..
+import { PageReducer } from "services/PageReducer"; //이게 맨아래있지 않으면 에러남..
 import MyColors from "_commons/MyColors";
 import { Space as SizedBox } from "_commons/widgets/SizedBox";
 import { RiCloseFill, RiMenu5Fill } from "react-icons/ri";
@@ -27,7 +27,7 @@ const Portpolio2Page = React.memo(() => {
 });
 
 const Menu = React.memo(() => {
-  const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
+  const isMenuOn = useTypedSelector((state) => state.page.isMenuOn);
   const menuList: string[] = ["HOME", "ABOUT US", "RESUME"];
 
   return (
@@ -76,7 +76,7 @@ const Menu = React.memo(() => {
 
 const FixedMenu = React.memo(() => {
   const dispatch = useTypedDispatch();
-  const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
+  const isMenuOn = useTypedSelector((state) => state.page.isMenuOn);
 
   return (
     <div
@@ -122,7 +122,7 @@ const FixedMenu = React.memo(() => {
           font-weight: 300;
         `}
         onClick={() => {
-          dispatch(ScreenReducer.actions.toggleMenu());
+          dispatch(PageReducer.actions.toggleMenu());
         }}
       >
         {isMenuOn ? <RiCloseFill /> : <RiMenu5Fill />}
@@ -132,9 +132,9 @@ const FixedMenu = React.memo(() => {
 });
 
 const StackedScreen = React.memo(() => {
-  const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
+  const isMenuOn = useTypedSelector((state) => state.page.isMenuOn);
+  const selectedScreenIndex = useTypedSelector((state) => state.page.selectedPageIndex);
   const screenList: JSX.Element[] = [<Page1 />,<Page2 />,<Page3 />,];
-  const selectedScreenIndex: number = 0;
 
   return (
     <div
