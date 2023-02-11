@@ -3,8 +3,11 @@ import { css } from "@emotion/css";
 import { useTypedDispatch, useTypedSelector } from "_commons/utils/ReduxUtil";
 import { ScreenReducer } from "services/ScreenReducer"; //이게 맨아래있지 않으면 에러남..
 import MyColors from "_commons/MyColors";
-import { Space as SizedBox } from "screens/widget/SizedBox";
+import { Space as SizedBox } from "_commons/widgets/SizedBox";
 import { RiCloseFill, RiMenu5Fill } from "react-icons/ri";
+import Page1 from "screens/widgets/portpolio2/Page1";
+import Page2 from "screens/widgets/portpolio2/Page2";
+import Page3 from "screens/widgets/portpolio2/Page3";
 
 const Portpolio2Page = React.memo(() => {
   return (
@@ -74,7 +77,7 @@ const Menu = React.memo(() => {
 const FixedMenu = React.memo(() => {
   const dispatch = useTypedDispatch();
   const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
-  
+
   return (
     <div
       className={css`
@@ -97,11 +100,11 @@ const FixedMenu = React.memo(() => {
           font-size: 20px;
           font-weight: 900;
 
-          display:flex;
+          display: flex;
           align-items: center;
         `}
       >
-        <SizedBox width="15px"/>
+        <SizedBox width="15px" />
         TryIt
       </div>
       <div
@@ -122,7 +125,7 @@ const FixedMenu = React.memo(() => {
           dispatch(ScreenReducer.actions.toggleMenu());
         }}
       >
-        {isMenuOn?<RiCloseFill/>:<RiMenu5Fill/>}
+        {isMenuOn ? <RiCloseFill /> : <RiMenu5Fill />}
       </div>
     </div>
   );
@@ -130,7 +133,7 @@ const FixedMenu = React.memo(() => {
 
 const StackedScreen = React.memo(() => {
   const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
-  const screenList: string[] = ["page", "page", "page"];
+  const screenList: JSX.Element[] = [<Page1 />,<Page2 />,<Page3 />,];
   const selectedScreenIndex: number = 0;
 
   return (
@@ -156,7 +159,6 @@ const StackedScreen = React.memo(() => {
               width: 100%;
               height: 100%;
               overflow: hidden;
-              background-color: pink;
 
               transition: transform 0.45s, opacity 0.45s;
               opacity: ${1 - 0.1 * i};
@@ -176,4 +178,6 @@ const StackedScreen = React.memo(() => {
     </div>
   );
 });
+
+
 export default Portpolio2Page;

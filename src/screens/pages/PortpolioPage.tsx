@@ -1,9 +1,9 @@
-import { Row } from "screens/widget/Row";
-import { Column } from "screens/widget/Column";
+import { Row } from "_commons/widgets/Row";
+import { Column } from "_commons/widgets/Column";
 import logoSource from "_commons/assets/logo-dark.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Divider } from "screens/widget/Divider";
+import { Divider } from "_commons/widgets/Divider";
 import { useMemo } from "react";
 import ImageUtil from "_commons/utils/ImageUtil";
 import styled from "@emotion/styled";
