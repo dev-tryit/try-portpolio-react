@@ -33,6 +33,7 @@ const actions = {
         returnList.splice(params.selectedPageIndex,1);
         returnList = [state.screenList[params.selectedPageIndex], ...returnList];
         
+        state.isMenuOn = false;
         state.screenList = returnList;
       });
     }
