@@ -1,10 +1,10 @@
 import React from "react";
 import { css } from "@emotion/css";
-import styled from "@emotion/styled";
 import { useTypedDispatch, useTypedSelector } from "_commons/utils/ReduxUtil";
 import { ScreenReducer } from "services/ScreenReducer"; //이게 맨아래있지 않으면 에러남..
 import MyColors from "_commons/MyColors";
 import { Space as SizedBox } from "screens/widget/SizedBox";
+import { RiCloseFill, RiMenu5Fill } from "react-icons/ri";
 
 const Portpolio2Page = React.memo(() => {
   return (
@@ -73,6 +73,8 @@ const Menu = React.memo(() => {
 
 const FixedMenu = React.memo(() => {
   const dispatch = useTypedDispatch();
+  const isMenuOn = useTypedSelector((state) => state.screen.isMenuOn);
+  
   return (
     <div
       className={css`
@@ -120,7 +122,7 @@ const FixedMenu = React.memo(() => {
           dispatch(ScreenReducer.actions.toggleMenu());
         }}
       >
-        X
+        {isMenuOn?<RiCloseFill/>:<RiMenu5Fill/>}
       </div>
     </div>
   );
