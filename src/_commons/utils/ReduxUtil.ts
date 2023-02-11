@@ -2,7 +2,6 @@
 import { PageReducer } from "services/PageReducer";
 import {
   ActionReducerMapBuilder,
-  CaseReducers,
   configureStore,
 } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
@@ -27,7 +26,6 @@ export type AppDispatch = typeof reduxStore.dispatch;
 export function makeExtraReducers(
   asyncActions: any
 ):
-  | CaseReducers<any, any>
   | ((builder: ActionReducerMapBuilder<any>) => void)
   | undefined {
   return (builder) => {

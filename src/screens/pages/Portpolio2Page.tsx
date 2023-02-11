@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { css } from "@emotion/css";
 import { useTypedDispatch, useTypedSelector } from "_commons/utils/ReduxUtil";
 import { PageReducer } from "services/PageReducer"; //이게 맨아래있지 않으면 에러남..
@@ -132,9 +132,9 @@ const FixedMenu = React.memo(() => {
 });
 
 const StackedScreen = React.memo(() => {
+  const dispatch = useTypedDispatch();
   const isMenuOn = useTypedSelector((state) => state.page.isMenuOn);
-  const selectedScreenIndex = useTypedSelector((state) => state.page.selectedPageIndex);
-  const screenList: JSX.Element[] = [<Page1 />,<Page2 />,<Page3 />,];
+  const screenList = useTypedSelector((state) => state.page.screenList);
 
   return (
     <div
@@ -146,15 +146,11 @@ const StackedScreen = React.memo(() => {
       `}
     >
       {screenList.map((screen, i) => {
-        const isCurrentPage = i === selectedScreenIndex;
-
         return (
           <div
             className={css`
               cursor: pointer;
-              z-index: ${isCurrentPage
-                ? `${screenList.length}`
-                : `${screenList.length - 1 - i}`};
+              z-index: ${screenList.length - 1 - i};
               position: absolute;
               width: 100%;
               height: 100%;
@@ -167,7 +163,7 @@ const StackedScreen = React.memo(() => {
                 : undefined};
             `}
             onClick={() => {
-              alert(`페이지 ${i}가 클릭되었습니다.`);
+              dispatch(PageReducer.actions.selectPage({selectedPageIndex: i}));
             }}
           >
             {screen}

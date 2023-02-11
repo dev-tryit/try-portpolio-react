@@ -1,10 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import AboutPage from "screens/widgets/portpolio2/AboutPage";
+import HomePage from "screens/widgets/portpolio2/HomePage";
+import ResumePage from "screens/widgets/portpolio2/ResumePage";
 import {  applyState, ApplyStateFunction, makeExtraReducers } from "_commons/utils/ReduxUtil";
 
 const _key = "page";
 const initialState = {
   isMenuOn: false,
-  selectedPageIndex: 0,
+  screenList: [<HomePage />,<AboutPage />,<ResumePage />,]
 };
 
 const actions = {
@@ -22,11 +25,15 @@ const actions = {
       });
     }
   ),
-  selectPage: createAsyncThunk<ApplyStateFunction<STATE>,void>(
-    `${_key}/toggleMenu`,
+  selectPage: createAsyncThunk<ApplyStateFunction<STATE>,{selectedPageIndex:number}>(
+    `${_key}/selectPage`,
     async (params) => {
       return applyState<STATE>((state) => {
-        state.isMenuOn = !state.isMenuOn;
+        var returnList = [...state.screenList];
+        returnList.splice(params.selectedPageIndex,1);
+        returnList = [state.screenList[params.selectedPageIndex], ...returnList];
+        
+        state.screenList = returnList;
       });
     }
   ),
