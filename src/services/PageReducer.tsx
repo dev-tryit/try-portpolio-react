@@ -5,9 +5,14 @@ import ResumePage from "screens/widgets/portpolio2/ResumePage";
 import {  applyState, ApplyStateFunction, makeExtraReducers } from "_commons/utils/ReduxUtil";
 
 const _key = "page";
-const initialState = {
+const initialState:{
+  isMenuOn: boolean,
+  menuList: string[],
+  screenMap: Record<string, JSX.Element>,
+} = {
   isMenuOn: false,
-  screenList: [<HomePage />,<AboutPage />,<ResumePage />,]
+  menuList: ["HOME","ABOUT US","RESUME"],
+  screenMap: {"HOME":<HomePage />,"ABOUT US":<AboutPage />,"RESUME":<ResumePage />,}
 };
 
 const actions = {
@@ -25,16 +30,16 @@ const actions = {
       });
     }
   ),
-  selectPage: createAsyncThunk<ApplyStateFunction<STATE>,{selectedPageIndex:number}>(
+  selectPage: createAsyncThunk<ApplyStateFunction<STATE>,{pageName:string}>(
     `${_key}/selectPage`,
     async (params) => {
       return applyState<STATE>((state) => {
-        var returnList = [...state.screenList];
-        returnList.splice(params.selectedPageIndex,1);
-        returnList = [state.screenList[params.selectedPageIndex], ...returnList];
-        
+        var returnMap = {...state.screenMap};
+        const { [params.pageName]: screen, ...newReturnMap } = returnMap;
+        returnMap = {[params.pageName]:screen, ...newReturnMap};
+        state.screenMap = returnMap;
+
         state.isMenuOn = false;
-        state.screenList = returnList;
       });
     }
   ),

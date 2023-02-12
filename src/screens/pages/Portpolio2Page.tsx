@@ -25,8 +25,8 @@ const Portpolio2Page = React.memo(() => {
 
 const Menu = React.memo(() => {
   const isMenuOn = useTypedSelector((state) => state.page.isMenuOn);
+  const menuList = useTypedSelector((state) => state.page.menuList);
   const dispatch = useTypedDispatch();
-  const menuList: string[] = ["HOME", "ABOUT US", "RESUME"];
 
   return (
     <nav
@@ -66,7 +66,7 @@ const Menu = React.memo(() => {
             margin-right: 14px;
           `}
           onClick={() => {
-            dispatch(PageReducer.actions.selectPage({selectedPageIndex: i}));
+            dispatch(PageReducer.actions.selectPage({pageName: menu}));
           }}
         >
           {menu}
@@ -136,7 +136,8 @@ const FixedMenu = React.memo(() => {
 const StackedScreen = React.memo(() => {
   const dispatch = useTypedDispatch();
   const isMenuOn = useTypedSelector((state) => state.page.isMenuOn);
-  const screenList = useTypedSelector((state) => state.page.screenList);
+  const screenMap = useTypedSelector((state) => state.page.screenMap);
+  const screenList = Object.entries(screenMap);
 
   return (
     <div
@@ -147,7 +148,7 @@ const StackedScreen = React.memo(() => {
         perspective-origin: 50% -50%; //보고 있는 눈에 위치를 변경.
       `}
     >
-      {screenList.map((screen, i) => {
+      {screenList.map(([pageName, screen], i) => {
         return (
           <div
             className={css`
@@ -165,7 +166,7 @@ const StackedScreen = React.memo(() => {
                 : undefined};
             `}
             onClick={() => {
-              dispatch(PageReducer.actions.selectPage({selectedPageIndex: i}));
+              dispatch(PageReducer.actions.selectPage({pageName: pageName}));
             }}
           >
             {screen}
