@@ -148,7 +148,7 @@ const StackedScreen = React.memo(() => {
     const p = state.page;
 
     const screenList = [...Object.values(p.screenMap)];
-    const screenWithIndexList = Object.entries({ ...screenList });
+    const screenWithIndexList = Object.entries({ ...screenList }); //[[0,HomeScreen],[1,AboutScreen]]
     return genSequence([...screenWithIndexList, ...screenWithIndexList])
       .skip(p.selectedScreenIndex)
       .take(3)
