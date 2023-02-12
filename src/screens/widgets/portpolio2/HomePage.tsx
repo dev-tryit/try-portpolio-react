@@ -1,5 +1,8 @@
 import { css } from "@emotion/css";
 import React from "react";
+import MyColors from "_commons/MyColors";
+import { ElevatedButton } from "_commons/widgets/ElevatedButton";
+import { SizedBox } from "_commons/widgets/SizedBox";
 
 const HomePage = React.memo(() => {
   return (
@@ -13,7 +16,7 @@ const HomePage = React.memo(() => {
     >
       <div
         className={css`
-          display:flex;
+          display: flex;
           flex-basis: 0; //최소 크기, 방향에 따라, basis가 width, height인지 결정남
           justify-content: center;
           align-items: center;
@@ -35,8 +38,43 @@ const HomePage = React.memo(() => {
         className={css`
           flex-grow: 670;
           background-color: white;
+          padding-left: 40px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
         `}
-      ></div>
+      >
+        <div
+          className={css`
+            font-size: 18px;
+          `}
+        >
+          {" "}
+          HELLO, THERE
+        </div>
+        <SizedBox height="30px" />
+        <div
+          className={css`
+            font-size: 60px;
+          `}
+        >
+          I'M ALEXIS LARTEN
+        </div>
+        <SizedBox height="30px" />
+        <div
+          className={css`
+            font-size: 18px;
+          `}
+        >
+          App/Web Developer
+        </div>
+        <SizedBox height="30px" />
+        <ElevatedButton backgroundColor={MyColors.pink} hoverBackgroundColor={MyColors.black} color={MyColors.white}>
+          Download CV
+        </ElevatedButton>
+      </div>
     </div>
   );
 });

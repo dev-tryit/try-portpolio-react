@@ -3,7 +3,7 @@ import { css } from "@emotion/css";
 import { useTypedDispatch, useTypedSelector } from "_commons/utils/ReduxUtil";
 import { PageReducer } from "services/PageReducer"; //이게 맨아래있지 않으면 에러남..
 import MyColors from "_commons/MyColors";
-import { Space as SizedBox } from "_commons/widgets/SizedBox";
+import { SizedBox as SizedBox } from "_commons/widgets/SizedBox";
 import { RiCloseFill, RiMenu5Fill } from "react-icons/ri";
 import { genSequence } from "gensequence";
 
@@ -57,7 +57,7 @@ const Menu = React.memo(() => {
       {menuList.map((menu, i) => (
         <div
           className={css`
-            cursor: pointer; //not working.. 이 때는, 해당 페이지가 뒤에 있기 때문일 수 있다.
+            ${isMenuOn ? 'cursor: pointer;': ''}//not working.. 이 때는, 해당 페이지가 뒤에 있기 때문일 수 있다.
 
             color: white;
             text-align: center;
@@ -168,7 +168,7 @@ const StackedScreen = React.memo(() => {
         return (
           <div
             className={css`
-              cursor: pointer;
+              ${isMenuOn ? 'cursor: pointer;': ''}
               z-index: ${screenList.length - 1 - i};
               position: absolute;
               width: 100%;
