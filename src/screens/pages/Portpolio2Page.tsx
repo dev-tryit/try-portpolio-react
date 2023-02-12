@@ -31,12 +31,12 @@ const Menu = React.memo(() => {
   return (
     <nav
       className={css`
-        z-index: 9999;
+        z-index: 10000;
         position: absolute;
         top: 0;
         width: 100vw;
-        height: 50vh;
-        padding: 30px;
+        height: 30vh;
+        padding: 20vh;
 
         transition: transform 1.2s, opacity 1.2s;
         opacity: ${isMenuOn ? 1 : 0};
@@ -83,6 +83,7 @@ const FixedMenu = React.memo(() => {
   return (
     <div
       className={css`
+        z-index: 10001;
         position: fixed;
         top: 0;
         right: 0;
