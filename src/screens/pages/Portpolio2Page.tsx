@@ -38,11 +38,11 @@ const Menu = React.memo(() => {
         height: 30vh;
         padding: 20vh;
 
-        transition: transform 1.2s, opacity 1.2s;
+        transition: transform 0.4s, opacity 0.4s;
         opacity: ${isMenuOn ? 1 : 0};
         transform: ${isMenuOn
           ? `translate3d(0,0,0)`
-          : `translate3d(0,150px,0)`};
+          : `translate3d(0,120px,0)`};
 
         display: flex;
         flex-direction: row;
