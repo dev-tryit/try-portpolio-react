@@ -69,7 +69,11 @@ const Menu = React.memo(() => {
             margin-right: 14px;
           `}
           onClick={() => {
-            dispatch(PageReducer.actions.selectedScreenIndex({ selectedScreenIndex: i }));
+            dispatch(
+              PageReducer.actions.selectedScreenIndex({
+                selectedScreenIndex: i,
+              })
+            );
           }}
         >
           {menu}
@@ -143,8 +147,9 @@ const StackedScreen = React.memo(() => {
   const screenList = useTypedSelector((state) => {
     const p = state.page;
 
-    const screenEntries = Object.entries(p.screenMap);
-    return genSequence([...screenEntries,...screenEntries])
+    const screenList = [...Object.values(p.screenMap)];
+    const screenWithIndexList = Object.entries({ ...screenList });
+    return genSequence([...screenWithIndexList, ...screenWithIndexList])
       .skip(p.selectedScreenIndex)
       .take(3)
       .toArray();
@@ -159,7 +164,7 @@ const StackedScreen = React.memo(() => {
         perspective-origin: 50% -50%; //보고 있는 눈에 위치를 변경.
       `}
     >
-      {screenList.map(([pageName, screen], i) => {
+      {screenList.map(([selectedScreenIndex, screen]:[selectedScreenIndex:string,screen:any], i) => {
         return (
           <div
             className={css`
@@ -177,7 +182,11 @@ const StackedScreen = React.memo(() => {
                 : undefined};
             `}
             onClick={() => {
-              dispatch(PageReducer.actions.selectedScreenIndex({ selectedScreenIndex:i }));
+              dispatch(
+                PageReducer.actions.selectedScreenIndex({
+                  selectedScreenIndex: Number(selectedScreenIndex),
+                })
+              );
             }}
           >
             {screen}
