@@ -5,6 +5,7 @@ import { PageReducer } from "services/PageReducer"; //이게 맨아래있지 않
 import MyColors from "_commons/MyColors";
 import { Space as SizedBox } from "_commons/widgets/SizedBox";
 import { RiCloseFill, RiMenu5Fill } from "react-icons/ri";
+import { genSequence } from "gensequence";
 
 const Portpolio2Page = React.memo(() => {
   return (
@@ -25,7 +26,9 @@ const Portpolio2Page = React.memo(() => {
 
 const Menu = React.memo(() => {
   const isMenuOn = useTypedSelector((state) => state.page.isMenuOn);
-  const menuList = useTypedSelector((state) => state.page.menuList);
+  const menuList = useTypedSelector((state) =>
+    Object.keys(state.page.screenMap)
+  );
   const dispatch = useTypedDispatch();
 
   return (
@@ -55,7 +58,7 @@ const Menu = React.memo(() => {
         <div
           className={css`
             cursor: pointer; //not working.. 이 때는, 해당 페이지가 뒤에 있기 때문일 수 있다.
-          
+
             color: white;
             text-align: center;
             font-size: 18px;
@@ -66,7 +69,7 @@ const Menu = React.memo(() => {
             margin-right: 14px;
           `}
           onClick={() => {
-            dispatch(PageReducer.actions.selectPage({pageName: menu}));
+            dispatch(PageReducer.actions.selectedScreenIndex({ selectedScreenIndex: i }));
           }}
         >
           {menu}
@@ -137,8 +140,15 @@ const FixedMenu = React.memo(() => {
 const StackedScreen = React.memo(() => {
   const dispatch = useTypedDispatch();
   const isMenuOn = useTypedSelector((state) => state.page.isMenuOn);
-  const screenMap = useTypedSelector((state) => state.page.screenMap);
-  const screenList = Object.entries(screenMap);
+  const screenList = useTypedSelector((state) => {
+    const p = state.page;
+
+    const screenEntries = Object.entries(p.screenMap);
+    return genSequence([...screenEntries,...screenEntries])
+      .skip(p.selectedScreenIndex)
+      .take(3)
+      .toArray();
+  });
 
   return (
     <div
@@ -167,7 +177,7 @@ const StackedScreen = React.memo(() => {
                 : undefined};
             `}
             onClick={() => {
-              dispatch(PageReducer.actions.selectPage({pageName: pageName}));
+              dispatch(PageReducer.actions.selectedScreenIndex({ selectedScreenIndex:i }));
             }}
           >
             {screen}
@@ -178,6 +188,5 @@ const StackedScreen = React.memo(() => {
     </div>
   );
 });
-
 
 export default Portpolio2Page;

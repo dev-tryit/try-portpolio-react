@@ -7,12 +7,12 @@ import {  applyState, ApplyStateFunction, makeExtraReducers } from "_commons/uti
 const _key = "page";
 const initialState:{
   isMenuOn: boolean,
-  menuList: string[],
   screenMap: Record<string, JSX.Element>,
+  selectedScreenIndex: number,
 } = {
   isMenuOn: false,
-  menuList: ["HOME","ABOUT US","RESUME"],
-  screenMap: {"HOME":<HomePage />,"ABOUT US":<AboutPage />,"RESUME":<ResumePage />,}
+  screenMap: {"HOME":<HomePage />,"ABOUT US":<AboutPage />,"RESUME":<ResumePage />,},
+  selectedScreenIndex: 0,
 };
 
 const actions = {
@@ -30,15 +30,11 @@ const actions = {
       });
     }
   ),
-  selectPage: createAsyncThunk<ApplyStateFunction<STATE>,{pageName:string}>(
-    `${_key}/selectPage`,
+  selectedScreenIndex: createAsyncThunk<ApplyStateFunction<STATE>,{selectedScreenIndex:number}>(
+    `${_key}/selectedScreenIndex`,
     async (params) => {
       return applyState<STATE>((state) => {
-        var returnMap = {...state.screenMap};
-        const { [params.pageName]: screen, ...newReturnMap } = returnMap;
-        returnMap = {[params.pageName]:screen, ...newReturnMap};
-        state.screenMap = returnMap;
-
+        state.selectedScreenIndex = params.selectedScreenIndex;
         state.isMenuOn = false;
       });
     }
