@@ -5,9 +5,6 @@ import { PageReducer } from "services/PageReducer"; //이게 맨아래있지 않
 import MyColors from "_commons/MyColors";
 import { Space as SizedBox } from "_commons/widgets/SizedBox";
 import { RiCloseFill, RiMenu5Fill } from "react-icons/ri";
-import Page1 from "screens/widgets/portpolio2/HomePage";
-import Page2 from "screens/widgets/portpolio2/AboutPage";
-import Page3 from "screens/widgets/portpolio2/ResumePage";
 
 const Portpolio2Page = React.memo(() => {
   return (
@@ -28,11 +25,13 @@ const Portpolio2Page = React.memo(() => {
 
 const Menu = React.memo(() => {
   const isMenuOn = useTypedSelector((state) => state.page.isMenuOn);
+  const dispatch = useTypedDispatch();
   const menuList: string[] = ["HOME", "ABOUT US", "RESUME"];
 
   return (
     <nav
       className={css`
+        z-index: 9999;
         position: absolute;
         top: 0;
         width: 100vw;
@@ -52,10 +51,11 @@ const Menu = React.memo(() => {
       `}
       onClick={() => {}}
     >
-      {menuList.map((menu) => (
+      {menuList.map((menu, i) => (
         <div
           className={css`
-            cursor: pointer; //TODO: 해당 커서가 활성화가 안됨...
+            cursor: pointer; //not working.. 이 때는, 해당 페이지가 뒤에 있기 때문일 수 있다.
+          
             color: white;
             text-align: center;
             font-size: 18px;
@@ -65,7 +65,9 @@ const Menu = React.memo(() => {
             margin-left: 14px;
             margin-right: 14px;
           `}
-          onClick={() => {}}
+          onClick={() => {
+            dispatch(PageReducer.actions.selectPage({selectedPageIndex: i}));
+          }}
         >
           {menu}
         </div>
