@@ -31,7 +31,7 @@ const HomePage = React.memo(() => {
             object-fit: cover;
           `}
           alt="profile"
-          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b36e2263-a330-456e-9553-144f12949fa9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230212%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230212T105239Z&X-Amz-Expires=86400&X-Amz-Signature=197c91f876826ce229c82a583247ea437c0a66577bd979e67c79b2cb808969dc&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
+          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b36e2263-a330-456e-9553-144f12949fa9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230302%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230302T132256Z&X-Amz-Expires=86400&X-Amz-Signature=d72ab9daacdb4ef3dac41eb7eb1c77f237f64bdcf3f6624d7ae63cc8739a6a77&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
         />
       </div>
       <div

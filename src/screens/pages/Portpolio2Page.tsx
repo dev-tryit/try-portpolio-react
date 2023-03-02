@@ -34,7 +34,7 @@ const Menu = React.memo(() => {
   return (
     <nav
       className={css`
-        z-index: 10000;
+        ${isMenuOn?'z-index: 1;':''}
         position: absolute;
         top: 0;
         width: 100vw;
