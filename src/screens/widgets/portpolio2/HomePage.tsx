@@ -115,6 +115,7 @@ const HomePage = React.memo(() => {
           className={css`
             display: flex;
             flex-direction: row;
+            font-size: 19px;
           `}>
           APP/WEB&nbsp;
           <Typewriter
