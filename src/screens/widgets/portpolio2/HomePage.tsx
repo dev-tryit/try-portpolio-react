@@ -3,6 +3,8 @@ import React from "react";
 import MyColors from "_commons/MyColors";
 import { ElevatedButton } from "_commons/widgets/ElevatedButton";
 import { SizedBox } from "_commons/widgets/SizedBox";
+import Typewriter from 'typewriter-effect';
+import { Row } from "_commons/widgets/Row";
 
 const typingEffectByWidth = keyframes`
   0% {
@@ -107,47 +109,23 @@ const HomePage = React.memo(() => {
           `}
         >
           I'M ETHAN
-        </div>
+        </div >
         <SizedBox height="30px" />
-        <div
+        <div 
           className={css`
-            position: relative;
-            font-size: 20px;
-            white-space: nowrap;
-            color: transparent;
-            ::before {
-              content: "APP/WEB DEVELOPER";
-              color: black;
-
-              //현재 div에 대해 100%의 크기를 갖도록 하는것이 목적
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              left:0px;
-
-              overflow: hidden;
-              //5초동안 31단계를 통해 typing을 보여줘. 계속. (31단계가, 뚝뚝 끊기는 느낌을 줌.)
-              animation: ${typingEffectByWidth} 3s steps(10) infinite;
-            }
-            ::after {
-              content: "";
-              color: black;
-
-              //현재 div에 대해 100%의 크기를 갖도록 하는것이 목적
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              left:0px;
-              margin-left: 15px;
-
-              overflow: hidden;
-              border-right: 1.5px solid black;
-              //5초동안 31단계를 통해 typing을 보여줘. 계속. (31단계가, 뚝뚝 끊기는 느낌을 줌.)
-              animation: ${typingEffectByWidth} 3s steps(10) infinite,  ${typingFlicker} 2s infinite;
-            }
-          `}
-        >
-          APP/WEB DEVELOPER
+            display: flex;
+            flex-direction: row;
+          `}>
+          APP/WEB&nbsp;
+          <Typewriter
+            options={{
+              strings: [' DEVELOPER'],
+              cursor: '&nbsp;&nbsp;|',
+              deleteSpeed:90,
+              autoStart: true,
+              loop: true,
+            }}
+          />
         </div>
         <SizedBox height="30px" />
         <ElevatedButton
