@@ -22,13 +22,7 @@ const AboutPage = React.memo(() => {
       </div>
       <div
         className={[
-          "col-span-8",
-          "bg-white",
-          "flex",
-          "flex-col",
-          "items-start",
-          "p-[50px]",
-          "overflow-y-scroll",
+          "col-span-8 bg-white flex flex-col items-start p-[50px] overflow-y-scroll scrollbar-hide",
         ].join(" ")}
       >
         <Title></Title>

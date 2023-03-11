@@ -1,1 +1,1 @@
-# try-portpolio-react
+ "tailwind-scrollbar-hide": "^1.1.7", /*scrollbar-hide를 위해 필요*/
