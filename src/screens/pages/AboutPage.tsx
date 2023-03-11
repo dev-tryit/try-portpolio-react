@@ -1,28 +1,12 @@
 import { css } from "@emotion/css";
 import React from "react";
 import { Divider } from "_commons/widgets/Divider";
+import { SizedBox } from "_commons/widgets/SizedBox";
 
 const AboutPage = React.memo(() => {
   return (
-    <div
-      className={css`
-        display: flex;
-
-        width: 100%;
-        height: 100%;
-      `}
-    >
-      <div
-        className={css`
-          display: flex;
-          flex-basis: 0; //최소 크기, 방향에 따라, basis가 width, height인지 결정남
-          justify-content: center;
-          align-items: center;
-
-          flex-grow: 330;
-          background-color: pink;
-        `}
-      >
+    <div className={["grid", "grid-cols-12", "w-full", "h-full"].join(" ")}>
+      <div className={["col-span-4", "bg-white"].join(" ")}>
         <img
           className={css`
             height: 100%;
@@ -33,18 +17,14 @@ const AboutPage = React.memo(() => {
         />
       </div>
       <div
-        className={css`
-          flex-grow: 670;
-          background-color: white;
-          padding-left: 40px;
-
-          display: flex;
-          flex-direction: column;
-          justify-content: start;
-          align-items: flex-start;
-
-          padding: 50px;
-        `}
+        className={[
+          "col-span-8",
+          "bg-white",
+          "flex",
+          "flex-col",
+          "items-start",
+          "p-[50px]",
+        ].join(" ")}
       >
         <Title></Title>
         <IntroductionCard></IntroductionCard>
@@ -84,9 +64,8 @@ const Title = () => {
             left: 0px;
             right: 0px;
             z-index: -1;
-            --tw-skew-x: -20deg;
             --tw-rotate: 0;
-            --tw-skew-x: 0;
+            --tw-skew-x: -20deg;
             --tw-skew-y: 0;
             --tw-scale-x: 1;
             --tw-scale-y: 1;
@@ -119,6 +98,7 @@ const Title = () => {
           line-height: 1.1;
           --tw-text-opacity: 1;
           color: rgb(0 0 0 / var(--tw-text-opacity));
+          margin-bottom: 40px;
 
           ::after {
             content: var(--tw-content);
@@ -146,7 +126,80 @@ const Title = () => {
 };
 
 const IntroductionCard = () => {
-  return <></>;
+  return (
+    <div className="grid grid-cols-12 gap-5">
+      <div className="col-span-12 lg:col-span-4">
+        <img src="https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" title="" alt="" />
+      </div>
+      <div className="col-span-12 lg:col-span-8">
+        <div className="pb-[40px]">
+          <h3 className="text-xl font-bold">I'm Alexis Larten</h3>
+          <SizedBox height="10px"></SizedBox>
+          <p className="">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+        </div>
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-6">
+            <div className="feature-box">
+              <i className="icon dark-color theme-after ti-ruler-pencil"></i>
+              <div className="feature-content">
+                <h5>Development</h5>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-span-12 md:col-span-6">
+            <div className="feature-box">
+              <i className="icon dark-color theme-after ti-image"></i>
+              <div className="feature-content">
+                <h5>Graphic</h5>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-span-12 md:col-span-6">
+            <div className="feature-box">
+              <i className="icon dark-color theme-after ti-brush-alt"></i>
+              <div className="feature-content">
+                <h5>Web design</h5>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-span-12 md:col-span-6">
+            <div className="feature-box">
+              <i className="icon dark-color theme-after ti-mobile"></i>
+              <div className="feature-content">
+                <h5>Mobile apps</h5>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="pt-[40px]">
+          <a href="#" className="px-btn px-btn-theme">
+            Download CV
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const DownloadCV = () => {
