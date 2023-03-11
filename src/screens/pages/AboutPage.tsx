@@ -5,12 +5,18 @@ import MyColors from "_commons/MyColors";
 import { Divider } from "_commons/widgets/Divider";
 import { ElevatedButton } from "_commons/widgets/ElevatedButton";
 import { SizedBox } from "_commons/widgets/SizedBox";
-import { BsCamera, BsEmojiSmile, BsHandThumbsUp, BsHeadphones } from "react-icons/bs";
+import {
+  BsCamera,
+  BsEmojiSmile,
+  BsHandThumbsUp,
+  BsHeadphones,
+} from "react-icons/bs";
+import BigSubjectAboveImage from "screens/widgets/BigSubjectAboveImage";
 
 const AboutPage = React.memo(() => {
   return (
-    <div className={["grid", "grid-cols-12", "w-full", "h-full"].join(" ")}>
-      <div className={["col-span-4", "bg-white"].join(" ")}>
+    <div className={"grid grid-cols-12 w-full h-full"}>
+      <div className={"relative col-span-4 bg-white"}>
         <img
           className={css`
             height: 100%;
@@ -19,11 +25,12 @@ const AboutPage = React.memo(() => {
           alt="profile"
           src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1325&q=80"
         />
+        <BigSubjectAboveImage>ABOUT ME</BigSubjectAboveImage>
       </div>
       <div
-        className={[
-          "col-span-8 bg-white flex flex-col items-start p-[50px] overflow-y-scroll scrollbar-hide",
-        ].join(" ")}
+        className={
+          "flex overflow-y-scroll flex-col col-span-8 items-start bg-white p-[50px] scrollbar-hide"
+        }
       >
         <Title></Title>
         <IntroductionCard></IntroductionCard>
@@ -228,10 +235,50 @@ class NumberCard {
 
 const NumberCardWrap = () => {
   const numberCardList: NumberCard[] = [
-    new NumberCard(`Happy Clients`, `365`, <BsEmojiSmile size={'30px'} color={MyColors.pink} className={'mt-1 mr-5'}></BsEmojiSmile>),
-    new NumberCard(`Happy Clients`, `365`, <BsHeadphones size={'30px'} color={MyColors.pink} className={'mt-1 mr-5'}></BsHeadphones>),
-    new NumberCard(`Happy Clients`, `365`, <BsCamera size={'30px'} color={MyColors.pink} className={'mt-1 mr-5'}></BsCamera>),
-    new NumberCard(`Happy Clients`, `365`, <BsHandThumbsUp size={'30px'} color={MyColors.pink} className={'mt-1 mr-5'}></BsHandThumbsUp>),
+    new NumberCard(
+      `Happy Clients`,
+      `365`,
+      (
+        <BsEmojiSmile
+          size={"30px"}
+          color={MyColors.pink}
+          className={"mt-1 mr-5"}
+        ></BsEmojiSmile>
+      )
+    ),
+    new NumberCard(
+      `Happy Clients`,
+      `365`,
+      (
+        <BsHeadphones
+          size={"30px"}
+          color={MyColors.pink}
+          className={"mt-1 mr-5"}
+        ></BsHeadphones>
+      )
+    ),
+    new NumberCard(
+      `Happy Clients`,
+      `365`,
+      (
+        <BsCamera
+          size={"30px"}
+          color={MyColors.pink}
+          className={"mt-1 mr-5"}
+        ></BsCamera>
+      )
+    ),
+    new NumberCard(
+      `Happy Clients`,
+      `365`,
+      (
+        <BsHandThumbsUp
+          size={"30px"}
+          color={MyColors.pink}
+          className={"mt-1 mr-5"}
+        ></BsHandThumbsUp>
+      )
+    ),
   ];
   return (
     <div className="counter-row mt-[50px] pt-[50px] border-t border-gray-200 w-full">
