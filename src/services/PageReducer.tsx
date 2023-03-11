@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import AboutPage from "screens/widgets/portpolio2/AboutPage";
-import HomePage from "screens/widgets/portpolio2/HomePage";
-import ResumePage from "screens/widgets/portpolio2/ResumePage";
+import AboutPage from "screens/pages/AboutPage";
+import HomePage from "screens/pages/HomePage";
+import ResumePage from "screens/pages/ResumePage";
 import {  applyState, ApplyStateFunction, makeExtraReducers } from "_commons/utils/ReduxUtil";
 
 const _key = "page";

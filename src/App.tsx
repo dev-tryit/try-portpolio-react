@@ -1,8 +1,8 @@
 import { Provider } from "react-redux";
-import Portpolio2Page from "screens/pages/Portpolio2Page";
+import MainLayout from "screens/layouts/MainLayout";
 
 function App() {
-  return <Portpolio2Page />;
+  return <MainLayout />;
 }
 
 export default App;

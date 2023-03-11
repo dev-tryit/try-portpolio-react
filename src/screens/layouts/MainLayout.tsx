@@ -7,7 +7,7 @@ import { SizedBox as SizedBox } from "_commons/widgets/SizedBox";
 import { RiCloseFill, RiMenu5Fill } from "react-icons/ri";
 import { genSequence } from "gensequence";
 
-const Portpolio2Page = React.memo(() => {
+const MainLayout = React.memo(() => {
   return (
     <div
       className={css`
@@ -198,4 +198,4 @@ const StackedScreen = React.memo(() => {
   );
 });
 
-export default Portpolio2Page;
+export default MainLayout;
