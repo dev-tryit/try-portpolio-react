@@ -12,31 +12,32 @@ import {
   BsHeadphones,
 } from "react-icons/bs";
 import BigSubjectAboveImage from "screens/widgets/BigSubjectAboveImage";
+import LAndLongR from "screens/widgets/LAndLongR";
 
 const AboutPage = React.memo(() => {
   return (
-    <div className={"grid grid-cols-12 w-full h-full"}>
-      <div className={"relative col-span-4 bg-white"}>
-        <img
-          className={css`
-            height: 100%;
-            object-fit: cover;
-          `}
-          alt="profile"
-          src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1325&q=80"
-        />
-        <BigSubjectAboveImage>ABOUT ME</BigSubjectAboveImage>
-      </div>
-      <div
-        className={
-          "flex overflow-y-scroll flex-col col-span-8 items-start bg-white p-[50px] scrollbar-hide"
-        }
-      >
-        <Title></Title>
-        <IntroductionCard></IntroductionCard>
-        <NumberCardWrap></NumberCardWrap>
-      </div>
-    </div>
+    <LAndLongR
+      left={
+        <>
+          <img
+            className={css`
+              height: 100%;
+              object-fit: cover;
+            `}
+            alt="profile"
+            src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1325&q=80"
+          />
+          <BigSubjectAboveImage>ABOUT ME</BigSubjectAboveImage>
+        </>
+      }
+      right={
+        <>
+          <Title></Title>
+          <IntroductionCard></IntroductionCard>
+          <NumberCardWrap></NumberCardWrap>
+        </>
+      }
+    ></LAndLongR>
   );
 });
 
