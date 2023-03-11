@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const ElevatedButton = styled.button<{
   padding?: string;
+  margin?: string;
   backgroundColor?: string;
   hoverBackgroundColor?: string;
   color?: string;
@@ -13,7 +14,8 @@ export const ElevatedButton = styled.button<{
     hoverBackgroundColor ? `background-color:${hoverBackgroundColor}` : ""};
   }
 
-  margin: 0px;
+  ${({ margin }) =>
+    margin ? `margin:${margin}` : ""};
   ${({ padding }) =>
     padding ? `padding:${padding}` : "padding:10px 20px 10px 20px"};
   ${({ backgroundColor }) =>

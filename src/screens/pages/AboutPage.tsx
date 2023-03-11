@@ -1,6 +1,9 @@
 import { css } from "@emotion/css";
+import { genSequence } from "gensequence";
 import React from "react";
+import MyColors from "_commons/MyColors";
 import { Divider } from "_commons/widgets/Divider";
+import { ElevatedButton } from "_commons/widgets/ElevatedButton";
 import { SizedBox } from "_commons/widgets/SizedBox";
 
 const AboutPage = React.memo(() => {
@@ -40,45 +43,44 @@ const Title = () => {
   return (
     <>
       <h6
-        className={css`
-          position: relative;
-          z-index: 1;
-          margin-bottom: 8px;
-          display: inline-block;
-          padding-left: 10px;
-          padding-right: 10px;
-          padding-top: 3px;
-          padding-bottom: 3px;
-          font-size: 11px;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 3px;
-          --tw-text-opacity: 1;
-          color: rgb(0 0 0 / var(--tw-text-opacity));
+        className={[css`
+        position: relative;
+        z-index: 1;
+        margin-bottom: 8px;
+        display: inline-block;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        --tw-text-opacity: 1;
+        color: rgb(0 0 0 / var(--tw-text-opacity));
 
-          ::after {
-            content: "";
-            position: absolute;
-            top: 0px;
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-            z-index: -1;
-            --tw-rotate: 0;
-            --tw-skew-x: -20deg;
-            --tw-skew-y: 0;
-            --tw-scale-x: 1;
-            --tw-scale-y: 1;
-            --tw-translate-x: 0;
-            --tw-translate-y: 0;
-            transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-              rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
-              skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
-              scaleY(var(--tw-scale-y));
-            --tw-bg-opacity: 1;
-            background-color: rgb(238 148 147 / var(--tw-bg-opacity));
-          }
-        `}
+        ::after {
+          content: "";
+          position: absolute;
+          top: 0px;
+          bottom: 0px;
+          left: 0px;
+          right: 0px;
+          z-index: -1;
+          --tw-rotate: 0;
+          --tw-skew-x: -20deg;
+          --tw-skew-y: 0;
+          --tw-scale-x: 1;
+          --tw-scale-y: 1;
+          --tw-translate-x: 0;
+          --tw-translate-y: 0;
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+            rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
+            skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+            scaleY(var(--tw-scale-y));
+          --tw-bg-opacity: 1;
+          background-color: rgb(238 148 147 / var(--tw-bg-opacity));
+        }
+      `,'font-bold'].join(" ")}
       >
         WHO I AM
       </h6>
@@ -125,11 +127,48 @@ const Title = () => {
   );
 };
 
+class Skill {
+  name: string;
+  description: string;
+
+  constructor(name: string, description: string) {
+    this.name = name;
+    this.description = description;
+  }
+}
+
 const IntroductionCard = () => {
+  const skillList: Skill[] = [
+    new Skill(
+      "Development",
+      `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+  do eiusmod tempor incididunt.`
+    ),
+    new Skill(
+      "Graphic",
+      `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+  do eiusmod tempor incididunt.`
+    ),
+    new Skill(
+      "Web design",
+      `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+  do eiusmod tempor incididunt.`
+    ),
+    new Skill(
+      "Mobile apps",
+      `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+  do eiusmod tempor incididunt.`
+    ),
+  ];
+
   return (
     <div className="grid grid-cols-12 gap-5">
       <div className="col-span-12 lg:col-span-4">
-        <img src="https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" title="" alt="" />
+        <img
+          src="https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          title=""
+          alt=""
+        />
       </div>
       <div className="col-span-12 lg:col-span-8">
         <div className="pb-[40px]">
@@ -143,60 +182,30 @@ const IntroductionCard = () => {
           </p>
         </div>
         <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 md:col-span-6">
-            <div className="feature-box">
-              <i className="icon dark-color theme-after ti-ruler-pencil"></i>
-              <div className="feature-content">
-                <h5>Development</h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6">
-            <div className="feature-box">
-              <i className="icon dark-color theme-after ti-image"></i>
-              <div className="feature-content">
-                <h5>Graphic</h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6">
-            <div className="feature-box">
-              <i className="icon dark-color theme-after ti-brush-alt"></i>
-              <div className="feature-content">
-                <h5>Web design</h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6">
-            <div className="feature-box">
-              <i className="icon dark-color theme-after ti-mobile"></i>
-              <div className="feature-content">
-                <h5>Mobile apps</h5>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt.
-                </p>
-              </div>
-            </div>
-          </div>
+          {genSequence(skillList)
+            .map((e) => {
+              return (
+                <div className="col-span-12 md:col-span-6">
+                  <div className="feature-box">
+                    <i className="icon dark-color theme-after ti-ruler-pencil"></i>
+                    <div className="feature-content">
+                      <h5 className="text-lg font-semibold">{e.name}</h5>
+                      <p>{e.description}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+            .toArray()}
         </div>
-        <div className="pt-[40px]">
-          <a href="#" className="px-btn px-btn-theme">
-            Download CV
-          </a>
-        </div>
+        <ElevatedButton
+          className={"tracking-[2px] mt-[40px]"}
+          backgroundColor={MyColors.pink}
+          hoverBackgroundColor={MyColors.black}
+          color={MyColors.white}
+        >
+          Download CV
+        </ElevatedButton>
       </div>
     </div>
   );
