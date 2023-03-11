@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { Children } from "react";
 
-type BigSubjectAboveImageType = {children:JSX.Element|string};
+type BigSubjectAboveImageType = {children:JSX.Element|string|undefined};
 const BigSubjectAboveImage = ({children}:BigSubjectAboveImageType) => {
     return (
       <div
