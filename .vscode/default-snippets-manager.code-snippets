@@ -1,0 +1,15 @@
+//Snippets Manager 플러그인이 필요함
+{
+	"make simple functional component": {
+		"prefix": "sfc",
+		"scope": "typescriptreact",
+		"body": [
+			"const $1 = ()=>{",
+			"	return (<></>);",
+			"};",
+			"",
+			"$2",
+		],
+		"description": "simple functional component"
+	}
+}

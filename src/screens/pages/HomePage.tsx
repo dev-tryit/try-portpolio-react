@@ -83,7 +83,7 @@ const HomePage = React.memo(() => {
         <SizedBox height="30px" />
         <DownloadButton />
       </div>
-      <SnsWidgets />
+      <AbsoluteSnsWidgets />
     </div>
   );
 });
@@ -99,7 +99,7 @@ const SnsWidget = ({ icon, href }: SnsWidgetType) => {
   );
 };
 
-const SnsWidgets = () => {
+const AbsoluteSnsWidgets = () => {
   const list = [
     // { icon: <FaFacebook size={"28px"} />, href: "#" },
     { icon: <FaInstagram size={"28px"} />, href: "https://www.instagram.com/kdh.tryit/" },
