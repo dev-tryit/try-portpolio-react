@@ -4,9 +4,9 @@
 		"scope": "typescriptreact",
 		"prefix": "sfc",
 		"body": [
-			"const $1 = ()=>{",
+			"const $1 = React.memo(()=>{",
 			"	return (<div className={['',css``].join(' ')}></div>);",
-			"};",
+			"});",
 			"",
 			"$0",
 		],
@@ -18,9 +18,9 @@
 		"prefix": "t",
 		"body": [
 			"<$1></$1>",
-			"const $1 = ()=>{",
+			"const $1 = React.memo(()=>{",
 			"	return (<div className={['',css``].join(' ')}></div>);",
-			"};",
+			"});",
 			"",
 			"$0",
 		],
