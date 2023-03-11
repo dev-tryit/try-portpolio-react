@@ -54,8 +54,8 @@ const AboutPage = React.memo(() => {
   );
 });
 
-const Title = () => {
-  return <></>;
+const Title = ()=>{
+  return (<div className={css``}></div>);
 };
 
 const IntroductionCard = () => {

@@ -5,7 +5,7 @@
 		"prefix": "sfc",
 		"body": [
 			"const $1 = ()=>{",
-			"	return (<></>);",
+			"	return (<div className={css``}></div>);",
 			"};",
 			"",
 			"$0",
@@ -19,7 +19,7 @@
 		"body": [
 			"<$1></$1>",
 			"const $1 = ()=>{",
-			"	return (<></>);",
+			"	return (<div className={css``}></div>);",
 			"};",
 			"",
 			"$0",
