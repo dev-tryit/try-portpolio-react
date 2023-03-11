@@ -44,34 +44,30 @@ const AboutPage = React.memo(() => {
           align-items: flex-start;
         `}
       >
-        <Title/>
-        <IntroductionCard/>
-        <DownloadCV/>
-        <Divider/>
-        <HorizontalCardList/>
+        <Title></Title>
+        <IntroductionCard></IntroductionCard>
+        <DownloadCV></DownloadCV>
+        <Divider />
+        <HorizontalCardList></HorizontalCardList>
       </div>
     </div>
   );
 });
 
-const Title = ()=>{
-  return (<></>);
+const Title = () => {
+  return <></>;
 };
 
-const IntroductionCard = ()=>{
-  return (<></>);
+const IntroductionCard = () => {
+  return <></>;
 };
 
-const DownloadCV = ()=>{
-  return (<></>);
+const DownloadCV = () => {
+  return <></>;
 };
 
-const HorizontalCardList = ()=>{
-  return (<></>);
+const HorizontalCardList = () => {
+  return <></>;
 };
-
-
-
-
 
 export default AboutPage;
