@@ -3,7 +3,7 @@ import React from "react";
 import MyColors from "_commons/MyColors";
 import { ElevatedButton } from "_commons/widgets/ElevatedButton";
 import { SizedBox } from "_commons/widgets/SizedBox";
-import Typewriter from 'typewriter-effect';
+import Typewriter from "typewriter-effect";
 import { Row } from "_commons/widgets/Row";
 
 const typingEffectByWidth = keyframes`
@@ -73,72 +73,97 @@ const HomePage = React.memo(() => {
           align-items: flex-start;
         `}
       >
-        <div
-          className={css`
-            position: relative;
-            font-size: 18px;
-            ::after {
-              content: ""; //after는 content가 있어야 동작한다.
-              position: absolute;
-              top: -10px;
-              left: -10px;
-              height: 40px;
-              width: 40px;
-              border-radius: 50%;
-              background-color: rgb(238 148 147 / 0.3);
-            }
-          `}
-        >
-          HELLO, THERE
-        </div>
+        <GreetingText />
         <SizedBox height="30px" />
-        <div
-          className={css`
-            position: relative;
-            font-size: 60px;
-            ::after {
-              content: "";
-              position: absolute;
-              top: 20px;
-              right: -10px;
-              height: 40px;
-              width: 40px;
-              border-radius: 50%;
-              background-color: rgb(96 165 250 / 0.5);
-            }
-          `}
-        >
-          I'M ETHAN
-        </div >
+        <NameText />
         <SizedBox height="30px" />
-        <div 
-          className={css`
-            display: flex;
-            flex-direction: row;
-            font-size: 19px;
-          `}>
-          APP/WEB&nbsp;
-          <Typewriter
-            options={{
-              strings: [' DEVELOPER'],
-              cursor: '&nbsp;&nbsp;|',
-              deleteSpeed:90,
-              autoStart: true,
-              loop: true,
-            }}
-          />
-        </div>
+        <JobText />
         <SizedBox height="30px" />
-        <ElevatedButton
-          backgroundColor={MyColors.pink}
-          hoverBackgroundColor={MyColors.black}
-          color={MyColors.white}
-        >
-          Download CV
-        </ElevatedButton>
+        <DownloadButton />
       </div>
     </div>
   );
 });
 
 export default HomePage;
+
+const GreetingText = () => {
+  return (
+    <div
+      className={css`
+        position: relative;
+        font-size: 18px;
+        ::after {
+          content: ""; //after는 content가 있어야 동작한다.
+          position: absolute;
+          top: -10px;
+          left: -10px;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          background-color: rgb(238 148 147 / 0.3);
+        }
+      `}
+    >
+      HELLO, THERE
+    </div>
+  );
+};
+
+const NameText = () => {
+  return (
+    <div
+      className={css`
+        position: relative;
+        font-size: 60px;
+        ::after {
+          content: "";
+          position: absolute;
+          top: 20px;
+          right: -10px;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          background-color: rgb(96 165 250 / 0.5);
+        }
+      `}
+    >
+      I'M ETHAN
+    </div>
+  );
+};
+
+const JobText = () => {
+  return (
+    <div
+      className={css`
+        display: flex;
+        flex-direction: row;
+        font-size: 19px;
+      `}
+    >
+      APP/WEB&nbsp;
+      <Typewriter
+        options={{
+          strings: [" DEVELOPER"],
+          cursor: "&nbsp;&nbsp;|",
+          deleteSpeed: 90,
+          autoStart: true,
+          loop: true,
+        }}
+      />
+    </div>
+  );
+};
+
+const DownloadButton = () => {
+  return (
+    <ElevatedButton
+      backgroundColor={MyColors.pink}
+      hoverBackgroundColor={MyColors.black}
+      color={MyColors.white}
+    >
+      Download CV
+    </ElevatedButton>
+  );
+};
