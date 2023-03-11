@@ -4,7 +4,9 @@ import MyColors from "_commons/MyColors";
 import { ElevatedButton } from "_commons/widgets/ElevatedButton";
 import { SizedBox } from "_commons/widgets/SizedBox";
 import Typewriter from "typewriter-effect";
-import { Row } from "_commons/widgets/Row";
+import { genSequence } from "gensequence";
+import { FaFacebook, FaInstagram, FaTwitter, FaTwitterSquare } from "react-icons/fa";
+import { IconType } from "react-icons";
 
 const typingEffectByWidth = keyframes`
   0% {
@@ -81,11 +83,60 @@ const HomePage = React.memo(() => {
         <SizedBox height="30px" />
         <DownloadButton />
       </div>
+      <SnsWidgets />
     </div>
   );
 });
 
 export default HomePage;
+
+type SnsWidgetType = { icon: JSX.Element; href: string };
+const SnsWidget = ({ icon, href }: SnsWidgetType) => {
+  return (
+    <div className={css``}>
+      <a href={href} target="_blank">{icon}</a>
+    </div>
+  );
+};
+
+const SnsWidgets = () => {
+  const list = [
+    // { icon: <FaFacebook size={"28px"} />, href: "#" },
+    { icon: <FaInstagram size={"28px"} />, href: "https://www.instagram.com/kdh.tryit/" },
+    // { icon: <FaTwitterSquare size={"28px"} />, href: "#" },
+  ];
+
+  return (
+    <div
+      className={css`
+        position: absolute;
+        bottom: 30px;
+        right: 40px;
+      `}
+    >
+      <ul
+        className={css`
+          display: flex;
+          flex-direction: row;
+        `}
+      >
+        {genSequence(list)
+          .map((e) => {
+            return (
+              <li
+                className={css`
+                  margin-left: 8px;
+                `}
+              >
+                <SnsWidget icon={e.icon} href={e.href} />
+              </li>
+            );
+          })
+          .toArray()}
+      </ul>
+    </div>
+  );
+};
 
 const GreetingText = () => {
   return (
