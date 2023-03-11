@@ -27,13 +27,12 @@ const AboutPage = React.memo(() => {
           "flex-col",
           "items-start",
           "p-[50px]",
+          "overflow-y-scroll",
         ].join(" ")}
       >
         <Title></Title>
         <IntroductionCard></IntroductionCard>
-        <DownloadCV></DownloadCV>
-        <Divider />
-        <HorizontalCardList></HorizontalCardList>
+        <NumberCardWrap></NumberCardWrap>
       </div>
     </div>
   );
@@ -43,44 +42,47 @@ const Title = () => {
   return (
     <>
       <h6
-        className={[css`
-        position: relative;
-        z-index: 1;
-        margin-bottom: 8px;
-        display: inline-block;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 3px;
-        padding-bottom: 3px;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        --tw-text-opacity: 1;
-        color: rgb(0 0 0 / var(--tw-text-opacity));
+        className={[
+          css`
+            position: relative;
+            z-index: 1;
+            margin-bottom: 8px;
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            --tw-text-opacity: 1;
+            color: rgb(0 0 0 / var(--tw-text-opacity));
 
-        ::after {
-          content: "";
-          position: absolute;
-          top: 0px;
-          bottom: 0px;
-          left: 0px;
-          right: 0px;
-          z-index: -1;
-          --tw-rotate: 0;
-          --tw-skew-x: -20deg;
-          --tw-skew-y: 0;
-          --tw-scale-x: 1;
-          --tw-scale-y: 1;
-          --tw-translate-x: 0;
-          --tw-translate-y: 0;
-          transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-            rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
-            skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
-            scaleY(var(--tw-scale-y));
-          --tw-bg-opacity: 1;
-          background-color: rgb(238 148 147 / var(--tw-bg-opacity));
-        }
-      `,'font-bold'].join(" ")}
+            ::after {
+              content: "";
+              position: absolute;
+              top: 0px;
+              bottom: 0px;
+              left: 0px;
+              right: 0px;
+              z-index: -1;
+              --tw-rotate: 0;
+              --tw-skew-x: -20deg;
+              --tw-skew-y: 0;
+              --tw-scale-x: 1;
+              --tw-scale-y: 1;
+              --tw-translate-x: 0;
+              --tw-translate-y: 0;
+              transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+                rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
+                skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+                scaleY(var(--tw-scale-y));
+              --tw-bg-opacity: 1;
+              background-color: rgb(238 148 147 / var(--tw-bg-opacity));
+            }
+          `,
+          "font-bold",
+        ].join(" ")}
       >
         WHO I AM
       </h6>
@@ -130,10 +132,12 @@ const Title = () => {
 class Skill {
   name: string;
   description: string;
+  icon: JSX.Element;
 
-  constructor(name: string, description: string) {
+  constructor(name: string, description: string, icon: JSX.Element) {
     this.name = name;
     this.description = description;
+    this.icon = icon;
   }
 }
 
@@ -142,22 +146,26 @@ const IntroductionCard = () => {
     new Skill(
       "Development",
       `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-  do eiusmod tempor incididunt.`
+  do eiusmod tempor incididunt.`,
+      <i></i>
     ),
     new Skill(
       "Graphic",
       `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-  do eiusmod tempor incididunt.`
+  do eiusmod tempor incididunt.`,
+      <i></i>
     ),
     new Skill(
       "Web design",
       `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-  do eiusmod tempor incididunt.`
+  do eiusmod tempor incididunt.`,
+      <i></i>
     ),
     new Skill(
       "Mobile apps",
       `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-  do eiusmod tempor incididunt.`
+  do eiusmod tempor incididunt.`,
+      <i></i>
     ),
   ];
 
@@ -187,7 +195,7 @@ const IntroductionCard = () => {
               return (
                 <div className="col-span-12 md:col-span-6">
                   <div className="feature-box">
-                    <i className="icon dark-color theme-after ti-ruler-pencil"></i>
+                    {e.icon}
                     <div className="feature-content">
                       <h5 className="text-lg font-semibold">{e.name}</h5>
                       <p>{e.description}</p>
@@ -211,12 +219,46 @@ const IntroductionCard = () => {
   );
 };
 
-const DownloadCV = () => {
-  return <></>;
-};
+class NumberCard {
+  name: string;
+  count: string;
+  icon: JSX.Element;
 
-const HorizontalCardList = () => {
-  return <></>;
+  constructor(name: string, count: string, icon: JSX.Element) {
+    this.name = name;
+    this.count = count;
+    this.icon = icon;
+  }
+}
+
+const NumberCardWrap = () => {
+  const numberCardList: NumberCard[] = [
+    new NumberCard(`Happy Clients`, `365`, <i></i>),
+    new NumberCard(`Happy Clients`, `365`, <i></i>),
+    new NumberCard(`Happy Clients`, `365`, <i></i>),
+    new NumberCard(`Happy Clients`, `365`, <i></i>),
+  ];
+  return (
+    <div className="counter-row mt-[50px] pt-[50px] border-t border-gray-200 w-full">
+      <div className="grid grid-cols-12 gap-5">
+        {genSequence(numberCardList)
+          .map((e) => {
+            return (
+              <div className="col-span-12 md:col-span-3 sm:col-span-6">
+                <div className="counter-box">
+                  <div className="icon">{e.icon}</div>
+                  <div className="counter-data">
+                    <div className="text-lg font-bold">{e.count}</div>
+                    <h6 className="text-sm">{e.name}</h6>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+          .toArray()}
+      </div>
+    </div>
+  );
 };
 
 export default AboutPage;
