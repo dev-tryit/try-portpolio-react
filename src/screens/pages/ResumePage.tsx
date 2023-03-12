@@ -35,82 +35,94 @@ const MyExperience = React.memo(() => {
   return (
     <div className="grid grid-cols-12 gap-7">
       <div className="col-span-12 lg:col-span-6">
-        <div className="relative">
-          <h2>Experience</h2>
-          <ul>
-            <li>
-              <div className="r-name">
-                <i className="ti-briefcase"></i>
-                <span>Google</span>
-                <label>OCT 2015 - JUNE 2016</label>
-              </div>
-              <div className="r-info">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo
-                </p>
-              </div>
-            </li>
-            <li>
-              <div className="r-name">
-                <i className="ti-briefcase"></i>
-                <span>Apple</span>
-                <label>OCT 2015 - JUNE 2016</label>
-              </div>
-              <div className="r-info">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <ResumeCard></ResumeCard>
       </div>
       <div className="col-span-12 lg:col-span-6">
-        <div className="resume-row">
-          <h2>Education</h2>
-          <ul>
-            <li>
-              <div className="r-name">
-                <i className="fas fa-graduation-cap"></i>
-                <span>University</span>
-                <label>OCT 2015 - JUNE 2016</label>
-              </div>
-              <div className="r-info">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo
-                </p>
-              </div>
-            </li>
-            <li>
-              <div className="r-name">
-                <i className="fas fa-graduation-cap"></i>
-                <span>Design and Art</span>
-                <label>OCT 2015 - JUNE 2016</label>
-              </div>
-              <div className="r-info">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <ResumeCard></ResumeCard>
       </div>
     </div>
   );
 });
+
+const ResumeCard = React.memo(()=>{
+  return (
+    <div
+    className={[
+      "relative",
+      css`
+        ::after {
+          content: "";
+          position: absolute;
+          top: 10px;
+          bottom: 0px;
+          left: 0px;
+          width: 1px;
+          border-left-width: 1px;
+          border-style: dashed;
+          --tw-border-opacity: 1;
+          border-color: rgb(229 231 235 / var(--tw-border-opacity));
+        }
+      `,
+    ].join(" ")}
+  >
+    <h2
+      className={[
+        "ml-[25px]",
+        css`
+          ::after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: -6px;
+            z-index: 1;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            --tw-bg-opacity: 1;
+            background-color: rgb(238 148 147 / var(--tw-bg-opacity));
+          }
+        `,
+      ].join(" ")}
+    >
+      Experience
+    </h2>
+    <ul className={"ml-[25px]"}>
+      <li>
+        <div className="r-name">
+          <i className="ti-briefcase"></i>
+          <span>Google</span>
+          <label>OCT 2015 - JUNE 2016</label>
+        </div>
+        <div className="r-info">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo
+          </p>
+        </div>
+      </li>
+      <li>
+        <div className="r-name">
+          <i className="ti-briefcase"></i>
+          <span>Apple</span>
+          <label>OCT 2015 - JUNE 2016</label>
+        </div>
+        <div className="r-info">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+    );
+});
+
+
 
 class SkillSlider {
   name: string;
